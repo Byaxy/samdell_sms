@@ -1,0 +1,368 @@
+:root {
+	/* Brand */
+	--app-primary: #6B3A2A;
+	--app-primary-hover: #542C1F;
+	--app-danger: #DC2626;
+	--app-danger-hover: #B91C1C;
+	--app-accent-color: #C5A028;
+
+	/* Sidebar */
+	--app-sidebar-bg: #F5F0EB;
+	--app-sidebar-text: #5C2E16;
+	--app-sidebar-active-bg: #6B3A2A;
+	--app-sidebar-active-text: #C5A028;
+
+	/* Navbar */
+	--app-navbar-bg: #6B3A2A;
+	--app-navbar-text: #FFFFFF;
+	--app-navbar-icon: #FFFFFF;
+	--app-page-head-bg: #F5F0EB;
+	--app-page-head-text: #5C2E16;
+
+	/* Tables & lists */
+	--app-table-header-bg: #6B3A2A;
+	--app-table-header-text: #FFFFFF;
+	--app-table-even-bg: #FDF8F0;
+	--app-table-row-hover-bg: #F5E6C8;
+	--app-select-row-hover-bg: #F5E6C8;
+
+	/* Buttons */
+	--app-btn-primary-bg: #6B3A2A;
+	--app-btn-primary-hover: #542C1F;
+	--app-btn-primary-text: #FFFFFF;
+	--app-btn-danger-bg: #DC2626;
+	--app-btn-danger-hover: #B91C1C;
+
+	/* Layout */
+	--page-max-width: 100% !important;
+	--content-max-width: 100% !important;
+	--form-container-max-width: 100% !important;
+}
+
+/* Full-width layout */
+.page-container,
+.form-layout,
+.list-view-container,
+.dataTable {
+	max-width: 100% !important;
+}
+
+/* Navbar */
+.navbar,
+.navbar-inner {
+	background: var(--app-navbar-bg) !important;
+}
+.navbar .navbar-brand,
+.navbar .navbar-text {
+	color: var(--app-navbar-text) !important;
+}
+.navbar .navbar-icon,
+.navbar .search-bar .search-icon {
+	color: var(--app-navbar-icon) !important;
+}
+.navbar .search-bar .input-group {
+	background: rgba(255, 255, 255, 0.15);
+	border-radius: 4px;
+}
+.navbar .search-bar .form-control {
+	background: transparent;
+	color: var(--app-navbar-text);
+}
+
+/* Page header */
+.page-head {
+	background: var(--app-page-head-bg) !important;
+}
+.page-head .page-title h1,
+.page-head .page-title .title-text {
+	color: var(--app-page-head-text) !important;
+}
+
+/* Form tabs */
+.form-tabs .nav-item .nav-link {
+	color: var(--app-sidebar-text);
+}
+.form-tabs .nav-item .nav-link.active {
+	color: var(--app-primary);
+	border-bottom-color: var(--app-primary);
+}
+
+/* Left workspace sidebar */
+.body-sidebar {
+	background: var(--app-sidebar-bg) !important;
+	border-right-color: color-mix(in srgb, var(--app-sidebar-active-bg) 20%, transparent) !important;
+}
+
+.body-sidebar .standard-sidebar-item .item-anchor,
+.body-sidebar .standard-sidebar-item .sidebar-item-label {
+	color: var(--app-sidebar-text) !important;
+	fill: var(--app-sidebar-text) !important;
+}
+
+.body-sidebar .standard-sidebar-item .sidebar-item-icon {
+	color: var(--app-sidebar-text) !important;
+	fill: var(--app-sidebar-text) !important;
+}
+
+.body-sidebar .standard-sidebar-item .sidebar-item-suffix {
+	color: var(--app-sidebar-text) !important;
+}
+
+.body-sidebar .standard-sidebar-item.active-sidebar,
+.body-sidebar .standard-sidebar-item.selected {
+	background: var(--app-sidebar-active-bg) !important;
+}
+.body-sidebar .standard-sidebar-item.active-sidebar .item-anchor,
+.body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-label,
+.body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-suffix {
+	color: var(--app-sidebar-active-text) !important;
+	fill: var(--app-sidebar-active-text) !important;
+}
+.body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-icon {
+	color: var(--app-sidebar-active-text) !important;
+	fill: var(--app-sidebar-active-text) !important;
+}
+
+.body-sidebar .standard-sidebar-item:not(.active-sidebar):has(a:not(.section-break)):hover {
+	background: rgba(107, 58, 42, 0.08) !important;
+}
+
+.body-sidebar .sidebar-toggle-btn {
+	background: var(--app-sidebar-bg) !important;
+	border-color: color-mix(in srgb, var(--app-sidebar-active-bg) 20%, transparent) !important;
+}
+
+.body-sidebar .section-break {
+	color: var(--app-sidebar-text) !important;
+	opacity: 0.55;
+}
+
+.body-sidebar .sidebar-user-button {
+	color: var(--app-sidebar-text) !important;
+	fill: var(--app-sidebar-text) !important;
+}
+
+/* Primary buttons */
+.btn-primary {
+	background: var(--app-btn-primary-bg) !important;
+	border-color: var(--app-btn-primary-bg) !important;
+	color: var(--app-btn-primary-text) !important;
+	transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover {
+	background: var(--app-btn-primary-hover) !important;
+	border-color: var(--app-btn-primary-hover) !important;
+	transform: translateY(-1px);
+}
+
+/* Default buttons */
+.btn-default {
+	color: var(--app-primary) !important;
+	fill: var(--app-primary) !important;
+}
+.btn-default:hover {
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Danger buttons */
+.btn-danger,
+button.btn.btn-danger,
+a.btn.btn-danger,
+.btn.btn-secondary.btn-danger {
+	background: var(--app-btn-danger-bg) !important;
+	border-color: var(--app-btn-danger-bg) !important;
+	transition: background 0.2s, transform 0.15s;
+}
+.btn-danger:hover,
+button.btn.btn-danger:hover,
+a.btn.btn-danger:hover,
+.btn.btn-secondary.btn-danger:hover {
+	background: var(--app-btn-danger-hover) !important;
+	border-color: var(--app-btn-danger-hover) !important;
+	transform: translateY(-1px);
+}
+
+/* Cancel buttons */
+.btn-cancel {
+	color: var(--app-btn-danger-bg) !important;
+	border-color: var(--app-btn-danger-bg) !important;
+}
+
+/* List view — table header */
+.list-view .list-row-head {
+	background: var(--app-table-header-bg) !important;
+}
+.list-view .list-row-head > div {
+	color: var(--app-table-header-text) !important;
+	font-weight: 500;
+}
+
+/* List view — even rows */
+.list-row-container:nth-child(even) {
+	background: var(--app-table-even-bg) !important;
+}
+
+/* List view — row hover */
+.list-row-container:hover {
+	background: var(--app-table-row-hover-bg) !important;
+}
+
+/* Report view — datatable */
+.datatable .dt-header .dt-cell--header {
+	background: var(--app-table-header-bg) !important;
+	color: var(--app-table-header-text) !important;
+}
+.datatable .dt-row.dt-row-filter .dt-cell {
+	background: #fff;
+}
+.datatable .dt-scrollable .dt-row:nth-child(even) {
+	background: var(--app-table-even-bg) !important;
+}
+.datatable .dt-scrollable .dt-row:hover {
+	background: var(--app-table-row-hover-bg) !important;
+}
+
+/* Child tables (form grid) */
+.form-grid .grid-heading-row,
+.form-grid .grid-heading-row .grid-row {
+	background: var(--app-table-header-bg) !important;
+}
+.form-grid .grid-heading-row .grid-static-col,
+.form-grid .grid-heading-row .row-check,
+.form-grid .grid-heading-row .row-index {
+	background: var(--app-table-header-bg) !important;
+	color: var(--app-table-header-text) !important;
+}
+.form-grid .grid-heading-row .grid-heading-cell {
+	color: var(--app-table-header-text) !important;
+	font-weight: 500;
+}
+
+.form-grid .grid-body .rows .grid-row:nth-child(even) .data-row .col,
+.form-grid .grid-body .rows .grid-row:nth-child(even) .data-row .row-check,
+.form-grid .grid-body .rows .grid-row:nth-child(even) .data-row .row-index {
+	background: var(--app-table-even-bg) !important;
+}
+.form-grid .grid-body .rows .grid-row:hover .data-row .col,
+.form-grid .grid-body .rows .grid-row:hover .data-row .row-check,
+.form-grid .grid-body .rows .grid-row:hover .data-row .row-index {
+	background: var(--app-table-row-hover-bg) !important;
+}
+
+.btn.btn-secondary.grid-add-row,
+.btn.btn-secondary.grid-add-multiple-rows {
+	background: var(--app-btn-primary-bg) !important;
+	border-color: var(--app-btn-primary-bg) !important;
+	color: var(--app-btn-primary-text) !important;
+}
+.btn.btn-secondary.grid-add-row:hover,
+.btn.btn-secondary.grid-add-multiple-rows:hover {
+	background: var(--app-btn-primary-hover) !important;
+	border-color: var(--app-btn-primary-hover) !important;
+}
+
+/* Select/dropdown hover */
+:root {
+	--awesomplete-hover-bg: var(--app-select-row-hover-bg);
+}
+
+.awesomplete > ul > li:hover,
+.awesomplete > ul > li[aria-selected="true"],
+.awesomplete [role="listbox"] > li:hover,
+.awesomplete [role="listbox"] > li[aria-selected="true"] {
+	background: var(--app-select-row-hover-bg) !important;
+	color: inherit !important;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+	background: var(--app-select-row-hover-bg) !important;
+}
+
+.selectable-item:hover,
+.selectable-item.highlighted {
+	background: var(--app-select-row-hover-bg) !important;
+}
+
+/* Native select elements — style the control itself */
+select.form-control,
+select.form-control:focus {
+	background-color: var(--control-bg);
+}
+select.form-control option:hover,
+select.form-control option:checked {
+	background: var(--app-select-row-hover-bg) !important;
+}
+
+/* Universal search results */
+.search-dialog .search-modal-body .search-result:hover {
+	background: var(--app-select-row-hover-bg) !important;
+}
+
+/* Modals */
+.modal-header {
+	background: var(--app-sidebar-bg) !important;
+	border-bottom: none;
+}
+.modal-header .modal-title {
+	color: var(--app-sidebar-text) !important;
+}
+
+/* Page loader */
+#freeze,
+.page-loading-indicator {
+	background: rgba(245, 240, 235, 0.95) !important;
+}
+#freeze svg,
+.page-loading-indicator svg {
+	display: none;
+}
+#freeze img {
+	width: 110px;
+	height: 110px;
+	object-fit: contain;
+	display: block;
+	margin: 0 auto 20px;
+	animation: theme-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes theme-pulse {
+	0%, 100% { transform: scale(1); opacity: 0.8; }
+	50% { transform: scale(1.05); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.body-sidebar {
+		z-index: 1020 !important;
+	}
+	.page-head {
+		padding: 8px 12px;
+	}
+}
+
+/* Accessibility — high contrast */
+@media (prefers-contrast: high) {
+	.btn-primary,
+	.btn-danger,
+	.btn-cancel {
+		border: 2px solid #000 !important;
+	}
+}
+
+/* Accessibility — reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	.btn-primary,
+	.btn-danger,
+	.table tbody tr,
+	.sidebar-item a {
+		transition: none !important;
+	}
+	.btn-primary:hover,
+	.btn-danger:hover {
+		transform: none !important;
+	}
+	#freeze img {
+		animation: none !important;
+	}
+}

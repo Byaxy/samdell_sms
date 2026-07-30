@@ -25,8 +25,8 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/samdell_sms/css/samdell_sms.css"
-# app_include_js = "/assets/samdell_sms/js/samdell_sms.js"
+app_include_css = ["/assets/samdell_sms/css/theme.css"]
+app_include_js = ["/assets/samdell_sms/js/theme.js"]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/samdell_sms/css/samdell_sms.css"

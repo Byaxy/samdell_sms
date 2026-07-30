@@ -1,0 +1,261 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-07-30 11:41:16.421474",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "brand_colors_tab",
+  "primary_color",
+  "primary_hover",
+  "column_break_hrjv",
+  "accent_color",
+  "danger_color",
+  "danger_hover",
+  "sidebar_tab",
+  "sidebar_background",
+  "active_item_background",
+  "column_break_lssl",
+  "sidebar_text_color",
+  "active_item_text",
+  "navigation_bar_tab",
+  "navbar_background",
+  "navbar_icon_color",
+  "column_break_crev",
+  "navbar_text_color",
+  "page_head_bg",
+  "page_head_text",
+  "tables_and_lists_tab",
+  "table_header_bg",
+  "even_row_bg",
+  "selectdropdown_row_hover_bg",
+  "column_break_zsoq",
+  "table_header_text",
+  "table_row_hover_bg",
+  "buttons_tab",
+  "primary_button_bg",
+  "primary_button_hover",
+  "column_break_yxst",
+  "primary_button_text",
+  "danger_button_bg",
+  "danger_button_hover"
+ ],
+ "fields": [
+  {
+   "fieldname": "brand_colors_tab",
+   "fieldtype": "Tab Break",
+   "label": "Brand Colors"
+  },
+  {
+   "fieldname": "primary_color",
+   "fieldtype": "Color",
+   "label": "Primary Color"
+  },
+  {
+   "fieldname": "primary_hover",
+   "fieldtype": "Color",
+   "label": "Primary Hover"
+  },
+  {
+   "fieldname": "column_break_hrjv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "accent_color",
+   "fieldtype": "Color",
+   "label": "Accent Color"
+  },
+  {
+   "fieldname": "danger_color",
+   "fieldtype": "Color",
+   "label": "Danger Color"
+  },
+  {
+   "fieldname": "danger_hover",
+   "fieldtype": "Color",
+   "label": "Danger Hover"
+  },
+  {
+   "fieldname": "sidebar_tab",
+   "fieldtype": "Tab Break",
+   "label": "Sidebar"
+  },
+  {
+   "fieldname": "sidebar_background",
+   "fieldtype": "Color",
+   "label": "Sidebar Background"
+  },
+  {
+   "fieldname": "active_item_background",
+   "fieldtype": "Color",
+   "label": "Active Item Background"
+  },
+  {
+   "fieldname": "column_break_lssl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sidebar_text_color",
+   "fieldtype": "Color",
+   "label": "Sidebar Text Color"
+  },
+  {
+   "fieldname": "active_item_text",
+   "fieldtype": "Color",
+   "label": "Active Item Text"
+  },
+  {
+   "fieldname": "navigation_bar_tab",
+   "fieldtype": "Tab Break",
+   "label": "Navigation Bar"
+  },
+  {
+   "fieldname": "navbar_background",
+   "fieldtype": "Color",
+   "label": "Navbar Background"
+  },
+  {
+   "fieldname": "navbar_icon_color",
+   "fieldtype": "Color",
+   "label": "Navbar Icon Color"
+  },
+  {
+   "fieldname": "column_break_crev",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "navbar_text_color",
+   "fieldtype": "Color",
+   "label": "Navbar Text Color"
+  },
+  {
+   "fieldname": "page_head_bg",
+   "fieldtype": "Color",
+   "label": "Page Head BG"
+  },
+  {
+   "fieldname": "page_head_text",
+   "fieldtype": "Color",
+   "label": "Page Head Text"
+  },
+  {
+   "fieldname": "tables_and_lists_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tables and Lists"
+  },
+  {
+   "fieldname": "table_header_bg",
+   "fieldtype": "Color",
+   "label": "Table Header BG"
+  },
+  {
+   "fieldname": "even_row_bg",
+   "fieldtype": "Color",
+   "label": "Even Row BG"
+  },
+  {
+   "fieldname": "selectdropdown_row_hover_bg",
+   "fieldtype": "Color",
+   "label": "Select/Dropdown Row Hover BG"
+  },
+  {
+   "fieldname": "column_break_zsoq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "table_header_text",
+   "fieldtype": "Color",
+   "label": "Table Header Text"
+  },
+  {
+   "fieldname": "table_row_hover_bg",
+   "fieldtype": "Color",
+   "label": "Table Row Hover BG"
+  },
+  {
+   "fieldname": "buttons_tab",
+   "fieldtype": "Tab Break",
+   "label": "Buttons"
+  },
+  {
+   "fieldname": "primary_button_bg",
+   "fieldtype": "Color",
+   "label": "Primary Button BG"
+  },
+  {
+   "fieldname": "primary_button_hover",
+   "fieldtype": "Color",
+   "label": "Primary Button Hover"
+  },
+  {
+   "fieldname": "column_break_yxst",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "primary_button_text",
+   "fieldtype": "Color",
+   "label": "Primary Button Text"
+  },
+  {
+   "fieldname": "danger_button_bg",
+   "fieldtype": "Color",
+   "label": "Danger Button BG"
+  },
+  {
+   "fieldname": "danger_button_hover",
+   "fieldtype": "Color",
+   "label": "Danger Button Hover"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-07-30 11:57:33.187035",
+ "modified_by": "Administrator",
+ "module": "SAMDELL SMS",
+ "name": "Theme",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Administrator",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Maintenance Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
