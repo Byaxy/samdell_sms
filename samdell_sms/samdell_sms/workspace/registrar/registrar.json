@@ -1,0 +1,175 @@
+{
+ "app": "samdell_sms",
+ "charts": [
+  {
+   "chart_name": "National Exam Pass Rate",
+   "label": "National Exam Pass Rate"
+  }
+ ],
+ "content": "[{\"id\": \"56af68197c\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Key Metrics</b></span>\", \"col\": 12}}, {\"id\": \"be21da493d\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Students\", \"col\": 3}}, {\"id\": \"62b6fc1ab9\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Program Enrollments\", \"col\": 3}}, {\"id\": \"fc6cb3de47\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Outstanding Fees\", \"col\": 3}}, {\"id\": \"52cc918b25\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"WASSCE Candidates Card\", \"col\": 3}}, {\"id\": \"e5d0b3c8d4\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"5d00837eac\", \"type\": \"chart\", \"data\": {\"chart_name\": \"National Exam Pass Rate\", \"col\": 6}}, {\"id\": \"94cbb0fd3f\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"0183a84931\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Links</b></span>\", \"col\": 12}}, {\"id\": \"2e1a7b7cc5\", \"type\": \"card\", \"data\": {\"card_name\": \"Student Records\", \"col\": 4}}, {\"id\": \"5a00fc2c56\", \"type\": \"card\", \"data\": {\"card_name\": \"Enrollment\", \"col\": 4}}, {\"id\": \"739d5b1658\", \"type\": \"card\", \"data\": {\"card_name\": \"Academic Records\", \"col\": 4}}]",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "graduation-cap",
+ "idx": 2,
+ "indicator_color": "blue",
+ "is_hidden": 0,
+ "label": "Registrar",
+ "link_type": "DocType",
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Student Records",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student",
+   "link_type": "DocType",
+   "label": "Student",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Group",
+   "link_type": "DocType",
+   "label": "Student Group",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Guardian",
+   "link_type": "DocType",
+   "label": "Guardian",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Enrollment",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Program Enrollment",
+   "link_type": "DocType",
+   "label": "Program Enrollment",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Program Enrollment Tool",
+   "link_type": "DocType",
+   "label": "Program Enrollment Tool",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Academic Year",
+   "link_type": "DocType",
+   "label": "Academic Year",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Academic Records",
+   "link_count": 4,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Master Grade Sheet",
+   "link_type": "DocType",
+   "label": "Master Grade Sheet",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "National Exam Record",
+   "link_type": "DocType",
+   "label": "National Exam Record",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Promotion Statement",
+   "link_type": "DocType",
+   "label": "Promotion Statement",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student ID Card",
+   "link_type": "DocType",
+   "label": "Student ID Card",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  }
+ ],
+ "module": "SAMDELL SMS",
+ "name": "Registrar",
+ "number_cards": [
+  {
+   "label": "Total Students",
+   "number_card_name": "Total Students"
+  },
+  {
+   "label": "Program Enrollments",
+   "number_card_name": "Program Enrollments"
+  },
+  {
+   "label": "Outstanding Fees",
+   "number_card_name": "Outstanding Fees"
+  },
+  {
+   "label": "WASSCE Candidates Card",
+   "number_card_name": "WASSCE Candidates Card"
+  }
+ ],
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 2.0,
+ "shortcuts": [],
+ "title": "Registrar",
+ "type": "Workspace"
+}

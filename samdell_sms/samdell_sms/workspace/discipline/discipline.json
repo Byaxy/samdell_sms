@@ -1,0 +1,100 @@
+{
+ "app": "samdell_sms",
+ "charts": [],
+ "content": "[{\"id\": \"5d7f2fbbbd\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Key Metrics</b></span>\", \"col\": 12}}, {\"id\": \"26b8a67254\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Student Leave Applications\", \"col\": 6}}, {\"id\": \"df309a35f7\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"5973278b1f\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Links</b></span>\", \"col\": 12}}, {\"id\": \"a396dcab0b\", \"type\": \"card\", \"data\": {\"card_name\": \"Student Conduct\", \"col\": 6}}, {\"id\": \"01a8d7790e\", \"type\": \"card\", \"data\": {\"card_name\": \"Communication\", \"col\": 6}}]",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "shield-alert",
+ "idx": 4,
+ "indicator_color": "red",
+ "is_hidden": 0,
+ "label": "Discipline",
+ "link_type": "DocType",
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Student Conduct",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student",
+   "link_type": "DocType",
+   "label": "Student",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Log",
+   "link_type": "DocType",
+   "label": "Student Log",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Leave Application",
+   "link_type": "DocType",
+   "label": "Student Leave Application",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Communication",
+   "link_count": 2,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "School Announcement",
+   "link_type": "DocType",
+   "label": "School Announcement",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "SMS Alert Log",
+   "link_type": "DocType",
+   "label": "SMS Alert Log",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  }
+ ],
+ "module": "SAMDELL SMS",
+ "name": "Discipline",
+ "number_cards": [
+  {
+   "label": "Student Leave Applications",
+   "number_card_name": "Student Leave Applications"
+  }
+ ],
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 4.0,
+ "shortcuts": [],
+ "title": "Discipline",
+ "type": "Workspace"
+}

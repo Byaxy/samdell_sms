@@ -1,0 +1,114 @@
+{
+ "app": "samdell_sms",
+ "charts": [],
+ "content": "[{\"id\": \"6f0bae1008\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Key Metrics</b></span>\", \"col\": 12}}, {\"id\": \"d123915eba\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Articles in Catalog\", \"col\": 4}}, {\"id\": \"5f0164e2a9\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Quizzes\", \"col\": 4}}, {\"id\": \"89682b3aea\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"e62bd0a509\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Links</b></span>\", \"col\": 12}}, {\"id\": \"06f0c375cd\", \"type\": \"card\", \"data\": {\"card_name\": \"Content Catalog\", \"col\": 6}}, {\"id\": \"bd99d7098f\", \"type\": \"card\", \"data\": {\"card_name\": \"Students\", \"col\": 6}}]",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "library",
+ "idx": 5,
+ "indicator_color": "yellow",
+ "is_hidden": 0,
+ "label": "Library",
+ "link_type": "DocType",
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Content Catalog",
+   "link_count": 4,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Article",
+   "link_type": "DocType",
+   "label": "Article",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Topic",
+   "link_type": "DocType",
+   "label": "Topic",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Quiz",
+   "link_type": "DocType",
+   "label": "Quiz",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Question",
+   "link_type": "DocType",
+   "label": "Question",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Students",
+   "link_count": 2,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student",
+   "link_type": "DocType",
+   "label": "Student",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Group",
+   "link_type": "DocType",
+   "label": "Student Group",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  }
+ ],
+ "module": "SAMDELL SMS",
+ "name": "Library",
+ "number_cards": [
+  {
+   "label": "Articles in Catalog",
+   "number_card_name": "Articles in Catalog"
+  },
+  {
+   "label": "Quizzes",
+   "number_card_name": "Quizzes"
+  }
+ ],
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 5.0,
+ "shortcuts": [],
+ "title": "Library",
+ "type": "Workspace"
+}

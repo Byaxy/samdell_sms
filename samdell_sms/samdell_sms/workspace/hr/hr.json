@@ -1,0 +1,203 @@
+{
+ "app": "samdell_sms",
+ "charts": [
+  {
+   "chart_name": "Department Wise Employee Count",
+   "label": "Department Wise Employee Count"
+  }
+ ],
+ "content": "[{\"id\": \"40ea4cc95e\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Key Metrics</b></span>\", \"col\": 12}}, {\"id\": \"bde427f39d\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Employees\", \"col\": 3}}, {\"id\": \"4030a2f83b\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Number of Employees on Leave (Today)\", \"col\": 3}}, {\"id\": \"956c3c9fd4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Holidays in this month\", \"col\": 3}}, {\"id\": \"524b45c078\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"New Hires (This Year)\", \"col\": 3}}, {\"id\": \"d19a2fc5b5\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"a619a7e908\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Department Wise Employee Count\", \"col\": 6}}, {\"id\": \"4c7e89589f\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"90daa94ce5\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Links</b></span>\", \"col\": 12}}, {\"id\": \"e256a271c0\", \"type\": \"card\", \"data\": {\"card_name\": \"Employee Setup\", \"col\": 4}}, {\"id\": \"aac52d751f\", \"type\": \"card\", \"data\": {\"card_name\": \"Leave & Attendance\", \"col\": 4}}, {\"id\": \"367d738d92\", \"type\": \"card\", \"data\": {\"card_name\": \"Payroll\", \"col\": 4}}, {\"id\": \"cde97d0bb7\", \"type\": \"card\", \"data\": {\"card_name\": \"Recruitment\", \"col\": 4}}]",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "users",
+ "idx": 8,
+ "indicator_color": "cyan",
+ "is_hidden": 0,
+ "label": "HR",
+ "link_type": "DocType",
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Employee Setup",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Employee",
+   "link_type": "DocType",
+   "label": "Employee",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Department",
+   "link_type": "DocType",
+   "label": "Department",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Holiday List",
+   "link_type": "DocType",
+   "label": "Holiday List",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Leave & Attendance",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Leave Application",
+   "link_type": "DocType",
+   "label": "Leave Application",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Attendance",
+   "link_type": "DocType",
+   "label": "Attendance",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Leave Allocation",
+   "link_type": "DocType",
+   "label": "Leave Allocation",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Payroll",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Payroll Entry",
+   "link_type": "DocType",
+   "label": "Payroll Entry",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Salary Slip",
+   "link_type": "DocType",
+   "label": "Salary Slip",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Salary Structure",
+   "link_type": "DocType",
+   "label": "Salary Structure",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Recruitment",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Job Applicant",
+   "link_type": "DocType",
+   "label": "Job Applicant",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Job Opening",
+   "link_type": "DocType",
+   "label": "Job Opening",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Interview",
+   "link_type": "DocType",
+   "label": "Interview",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  }
+ ],
+ "module": "SAMDELL SMS",
+ "name": "HR",
+ "number_cards": [
+  {
+   "label": "Total Employees",
+   "number_card_name": "Total Employees"
+  },
+  {
+   "label": "Number of Employees on Leave (Today)",
+   "number_card_name": "Number of Employees on Leave (Today)"
+  },
+  {
+   "label": "Holidays in this month",
+   "number_card_name": "Holidays in this month"
+  },
+  {
+   "label": "New Hires (This Year)",
+   "number_card_name": "New Hires (This Year)"
+  }
+ ],
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 8.0,
+ "shortcuts": [],
+ "title": "HR",
+ "type": "Workspace"
+}

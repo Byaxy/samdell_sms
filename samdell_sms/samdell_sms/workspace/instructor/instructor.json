@@ -1,0 +1,157 @@
+{
+ "app": "samdell_sms",
+ "charts": [
+  {
+   "chart_name": "Course Enrollments",
+   "label": "Course Enrollments"
+  }
+ ],
+ "content": "[{\"id\": \"a37b3cb356\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Key Metrics</b></span>\", \"col\": 12}}, {\"id\": \"fc76108d52\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Assessment Results\", \"col\": 4}}, {\"id\": \"1c533e533a\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Students\", \"col\": 4}}, {\"id\": \"27114189a5\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"08fa99255f\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Course Enrollments\", \"col\": 6}}, {\"id\": \"c09e958d33\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"6a918b98b9\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Links</b></span>\", \"col\": 12}}, {\"id\": \"41802c6074\", \"type\": \"card\", \"data\": {\"card_name\": \"Teaching\", \"col\": 4}}, {\"id\": \"ed128602ec\", \"type\": \"card\", \"data\": {\"card_name\": \"Assessment\", \"col\": 4}}, {\"id\": \"b314aaab00\", \"type\": \"card\", \"data\": {\"card_name\": \"Class & Attendance\", \"col\": 4}}]",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "book-open",
+ "idx": 3,
+ "indicator_color": "orange",
+ "is_hidden": 0,
+ "label": "Instructor",
+ "link_type": "DocType",
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Teaching",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Course",
+   "link_type": "DocType",
+   "label": "Course",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Course Schedule",
+   "link_type": "DocType",
+   "label": "Course Schedule",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Course Enrollment",
+   "link_type": "DocType",
+   "label": "Course Enrollment",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Assessment",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Assessment Plan",
+   "link_type": "DocType",
+   "label": "Assessment Plan",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Assessment Result",
+   "link_type": "DocType",
+   "label": "Assessment Result",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Assessment Result Tool",
+   "link_type": "DocType",
+   "label": "Assessment Result Tool",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Class & Attendance",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Group",
+   "link_type": "DocType",
+   "label": "Student Group",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Attendance",
+   "link_type": "DocType",
+   "label": "Student Attendance",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Attendance Tool",
+   "link_type": "DocType",
+   "label": "Student Attendance Tool",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  }
+ ],
+ "module": "SAMDELL SMS",
+ "name": "Instructor",
+ "number_cards": [
+  {
+   "label": "Assessment Results",
+   "number_card_name": "Assessment Results"
+  },
+  {
+   "label": "Total Students",
+   "number_card_name": "Total Students"
+  }
+ ],
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 3.0,
+ "shortcuts": [],
+ "title": "Instructor",
+ "type": "Workspace"
+}

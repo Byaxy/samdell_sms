@@ -1,0 +1,229 @@
+{
+ "app": "samdell_sms",
+ "charts": [
+  {
+   "chart_name": "National Exam Pass Rate",
+   "label": "National Exam Pass Rate"
+  },
+  {
+   "chart_name": "Assets by Category",
+   "label": "Assets by Category"
+  },
+  {
+   "chart_name": "Profit and Loss",
+   "label": "Profit and Loss"
+  }
+ ],
+ "content": "[{\"id\": \"41c128aa28\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Key Metrics</b></span>\", \"col\": 12}}, {\"id\": \"4570fc44a8\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"WASSCE Candidates Card\", \"col\": 3}}, {\"id\": \"6ec1f86e34\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"WASSCE Pass Rate Card\", \"col\": 3}}, {\"id\": \"2350df6d60\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"WASSCE Distinctions Card\", \"col\": 3}}, {\"id\": \"55cc4736de\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Asset Value Card\", \"col\": 3}}, {\"id\": \"0aab3cb194\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Students\", \"col\": 3}}, {\"id\": \"3395a3bdc7\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Outstanding Fees\", \"col\": 3}}, {\"id\": \"6eef090eb0\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"3877e443a4\", \"type\": \"chart\", \"data\": {\"chart_name\": \"National Exam Pass Rate\", \"col\": 6}}, {\"id\": \"81b8771899\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Assets by Category\", \"col\": 6}}, {\"id\": \"8e7785477b\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Profit and Loss\", \"col\": 6}}, {\"id\": \"3e314fa544\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"ed709d6cb2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Links</b></span>\", \"col\": 12}}, {\"id\": \"954f0d8393\", \"type\": \"card\", \"data\": {\"card_name\": \"Academic Oversight\", \"col\": 4}}, {\"id\": \"857aaa7031\", \"type\": \"card\", \"data\": {\"card_name\": \"Admissions & Records\", \"col\": 4}}, {\"id\": \"02fe8b4600\", \"type\": \"card\", \"data\": {\"card_name\": \"Finance\", \"col\": 4}}, {\"id\": \"074a698266\", \"type\": \"card\", \"data\": {\"card_name\": \"Communication\", \"col\": 4}}]",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "organization",
+ "idx": 9,
+ "indicator_color": "blue",
+ "is_hidden": 0,
+ "label": "Operations Center",
+ "link_type": "DocType",
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Academic Oversight",
+   "link_count": 4,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Master Grade Sheet",
+   "link_type": "DocType",
+   "label": "Master Grade Sheet",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Promotion Evaluation",
+   "link_type": "DocType",
+   "label": "Promotion Evaluation",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Promotion Statement",
+   "link_type": "DocType",
+   "label": "Promotion Statement",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "National Exam Record",
+   "link_type": "DocType",
+   "label": "National Exam Record",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Admissions & Records",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student",
+   "link_type": "DocType",
+   "label": "Student",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Group",
+   "link_type": "DocType",
+   "label": "Student Group",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Program Enrollment",
+   "link_type": "DocType",
+   "label": "Program Enrollment",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Finance",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Fees",
+   "link_type": "DocType",
+   "label": "Fees",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Payment Entry",
+   "link_type": "DocType",
+   "label": "Payment Entry",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Journal Entry",
+   "link_type": "DocType",
+   "label": "Journal Entry",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Communication",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "School Announcement",
+   "link_type": "DocType",
+   "label": "School Announcement",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "SMS Alert Log",
+   "link_type": "DocType",
+   "label": "SMS Alert Log",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Website Enquiry",
+   "link_type": "DocType",
+   "label": "Website Enquiry",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  }
+ ],
+ "module": "SAMDELL SMS",
+ "name": "Operations Center",
+ "number_cards": [
+  {
+   "label": "WASSCE Candidates Card",
+   "number_card_name": "WASSCE Candidates Card"
+  },
+  {
+   "label": "WASSCE Pass Rate Card",
+   "number_card_name": "WASSCE Pass Rate Card"
+  },
+  {
+   "label": "WASSCE Distinctions Card",
+   "number_card_name": "WASSCE Distinctions Card"
+  },
+  {
+   "label": "Total Asset Value Card",
+   "number_card_name": "Total Asset Value Card"
+  },
+  {
+   "label": "Total Students",
+   "number_card_name": "Total Students"
+  },
+  {
+   "label": "Outstanding Fees",
+   "number_card_name": "Outstanding Fees"
+  }
+ ],
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 9.0,
+ "shortcuts": [],
+ "title": "Operations Center",
+ "type": "Workspace"
+}

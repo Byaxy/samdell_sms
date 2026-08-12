@@ -1,0 +1,165 @@
+{
+ "app": "samdell_sms",
+ "charts": [
+  {
+   "chart_name": "Profit and Loss",
+   "label": "Profit and Loss"
+  },
+  {
+   "chart_name": "Accounts Receivable Ageing",
+   "label": "Accounts Receivable Ageing"
+  }
+ ],
+ "content": "[{\"id\": \"6d11225999\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Key Metrics</b></span>\", \"col\": 12}}, {\"id\": \"0238ad0c8b\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Incoming Payment\", \"col\": 4}}, {\"id\": \"379bda58be\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Outgoing Payment\", \"col\": 4}}, {\"id\": \"a4066095f5\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Outstanding Fees\", \"col\": 4}}, {\"id\": \"49b1025c6d\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"f4730d4e3d\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Profit and Loss\", \"col\": 6}}, {\"id\": \"3e7d9eb88c\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Accounts Receivable Ageing\", \"col\": 6}}, {\"id\": \"13766523b8\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"b13894b367\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Links</b></span>\", \"col\": 12}}, {\"id\": \"c7e6d16dd6\", \"type\": \"card\", \"data\": {\"card_name\": \"Fees & Billing\", \"col\": 4}}, {\"id\": \"c7f8daedbb\", \"type\": \"card\", \"data\": {\"card_name\": \"Payments\", \"col\": 4}}, {\"id\": \"ed7856c5c9\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "circle-dollar-sign",
+ "idx": 7,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Accounts",
+ "link_type": "DocType",
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Fees & Billing",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Fees",
+   "link_type": "DocType",
+   "label": "Fees",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Fee Structure",
+   "link_type": "DocType",
+   "label": "Fee Structure",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Sales Invoice",
+   "link_type": "DocType",
+   "label": "Sales Invoice",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Payments",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Payment Entry",
+   "link_type": "DocType",
+   "label": "Payment Entry",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Journal Entry",
+   "link_type": "DocType",
+   "label": "Journal Entry",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Payment Reconciliation",
+   "link_type": "DocType",
+   "label": "Payment Reconciliation",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Reports",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "General Ledger",
+   "link_type": "Report",
+   "label": "General Ledger",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 1,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Accounts Receivable",
+   "link_type": "Report",
+   "label": "Accounts Receivable",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 1,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Trial Balance",
+   "link_type": "Report",
+   "label": "Trial Balance",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 1,
+   "link_count": 0
+  }
+ ],
+ "module": "SAMDELL SMS",
+ "name": "Accounts",
+ "number_cards": [
+  {
+   "label": "Total Incoming Payment",
+   "number_card_name": "Total Incoming Payment"
+  },
+  {
+   "label": "Total Outgoing Payment",
+   "number_card_name": "Total Outgoing Payment"
+  },
+  {
+   "label": "Outstanding Fees",
+   "number_card_name": "Outstanding Fees"
+  }
+ ],
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 7.0,
+ "shortcuts": [],
+ "title": "Accounts",
+ "type": "Workspace"
+}

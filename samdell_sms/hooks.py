@@ -1,3 +1,5 @@
+import frappe
+
 app_name = "samdell_sms"
 app_title = "SAMDELL SMS"
 app_publisher = "Charles Byakutaga"
@@ -59,10 +61,10 @@ app_include_js = ["/assets/samdell_sms/js/theme.js"]
 # application home page (will override Website Settings)
 # home_page = "login"
 
-# website user home page (by Role)
-# role_home_page = {
-# 	"Role": "home_page"
-# }
+# website user home page (by Role): maps each role to its landing workspace.
+# Roles not listed here (System Manager, Administrator) keep the default desk home.
+# See samdell_sms.api.home for the priority-ordered list and logic.
+get_website_user_home_page = "samdell_sms.api.home.get_website_user_home_page"
 
 # Generators
 # ----------
@@ -77,10 +79,9 @@ app_include_js = ["/assets/samdell_sms/js/theme.js"]
 # ----------
 
 # add methods and filters to jinja environment
-# jinja = {
-# 	"methods": "samdell_sms.utils.jinja_methods",
-# 	"filters": "samdell_sms.utils.jinja_filters"
-# }
+jinja = {
+	"methods": "samdell_sms.demo.print_formats",
+}
 
 # Installation
 # ------------
@@ -138,13 +139,156 @@ app_include_js = ["/assets/samdell_sms/js/theme.js"]
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"School Announcement": {
+		"on_update": "samdell_sms.samdell_sms.doctype.school_announcement.school_announcement.on_update"
+	},
+	"Program Enrollment": {"on_submit": "samdell_sms.api.id_card.auto_create_id_card"},
+}
+
+# Fixtures
+# ----------
+
+fixtures = [
+	"Grading Scale",
+	"Workflow",
+	{
+		"dt": "Role",
+		"filters": [
+			[
+				"name",
+				"in",
+				[
+					"Registrar",
+					"Discipline Officer",
+					"Transport Coordinator",
+					"Librarian",
+					"Front Desk",
+					"Principal",
+				],
+			]
+		],
+	},
+	{
+		"dt": "Number Card",
+		"filters": [
+			[
+				"name",
+				"in",
+				[
+					"WASSCE Candidates Card",
+					"WASSCE Pass Rate Card",
+					"WASSCE Distinctions Card",
+					"Total Asset Value Card",
+					"Website Enquiries",
+					"Open Student Applicants",
+					"Total Students",
+					"Program Enrollments",
+					"Outstanding Fees",
+					"Assessment Results",
+					"Student Leave Applications",
+					"Articles in Catalog",
+					"Quizzes",
+					"Vehicles Registered",
+					"Vehicle Logs",
+				],
+			]
+		],
+	},
+	{
+		"dt": "Dashboard Chart",
+		"filters": [["name", "in", ["National Exam Pass Rate", "Assets by Category"]]],
+	},
+	{
+		"dt": "Custom DocPerm",
+		"filters": [
+			[
+				"parent",
+				"in",
+				[
+					"Academic Term",
+					"Academic Year",
+					"Appraisal",
+					"Article",
+					"Assessment Criteria",
+					"Assessment Group",
+					"Assessment Plan",
+					"Assessment Result",
+					"Assessment Result Tool",
+					"Asset",
+					"Asset Category",
+					"Attendance",
+					"Communication",
+					"Course",
+					"Course Activity",
+					"Course Enrollment",
+					"Course Schedule",
+					"Course Scheduling Tool",
+					"Course Topic",
+					"Customer",
+					"Driver",
+					"Early Childhood Progress Report",
+					"Education Settings",
+					"Email Account",
+					"Employee",
+					"Event",
+					"Fee Category",
+					"Fee Schedule",
+					"Fee Structure",
+					"Fees",
+					"Grading Scale",
+					"Guardian",
+					"Instructor",
+					"Journal Entry",
+					"Lead",
+					"Leave Application",
+					"Master Grade Sheet",
+					"National Exam Record",
+					"Payment Entry",
+					"Payment Record",
+					"Program",
+					"Program Enrollment",
+					"Program Enrollment Tool",
+					"Promotion Evaluation",
+					"Promotion Policy",
+					"Promotion Statement",
+					"Question",
+					"Quiz",
+					"SMS Alert Log",
+					"SMS Center",
+					"Sales Invoice",
+					"School Announcement",
+					"School Branding Settings",
+					"School House",
+					"Student",
+					"Student Admission",
+					"Student Applicant",
+					"Student Attendance",
+					"Student Attendance Tool",
+					"Student Batch Name",
+					"Student Category",
+					"Student Group",
+					"Student ID Card",
+					"Student Leave Application",
+					"Student Log",
+					"Student Report Generation Tool",
+					"Theme",
+					"ToDo",
+					"Topic",
+					"Vehicle",
+					"Vehicle Log",
+					"Vehicle Service",
+					"Website Enquiry",
+					"WhatsApp Message",
+				],
+			]
+		],
+	},
+]
+
+# Website user redirect
+# ----------
+
 
 # Scheduled Tasks
 # ---------------
@@ -255,4 +399,3 @@ app_include_js = ["/assets/samdell_sms/js/theme.js"]
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

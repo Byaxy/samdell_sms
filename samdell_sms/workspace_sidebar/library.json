@@ -1,0 +1,126 @@
+{
+ "app": "samdell_sms",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "header_icon": "library",
+ "idx": 5,
+ "items": [
+  {
+   "type": "Link",
+   "link_type": "Workspace",
+   "link_to": "Library",
+   "label": "Home",
+   "icon": "home",
+   "child": 0,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Section Break",
+   "link_type": "DocType",
+   "label": "Content Catalog",
+   "icon": "book-open",
+   "child": 0,
+   "indent": 1,
+   "collapsible": 1,
+   "keep_closed": 1,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Article",
+   "label": "Article",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Topic",
+   "label": "Topic",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Quiz",
+   "label": "Quiz",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Question",
+   "label": "Question",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Course",
+   "label": "Course",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Section Break",
+   "link_type": "DocType",
+   "label": "Students",
+   "icon": "users-round",
+   "child": 0,
+   "indent": 1,
+   "collapsible": 1,
+   "keep_closed": 1,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Student",
+   "label": "Student",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Student Group",
+   "label": "Student Group",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  }
+ ],
+ "modified_by": "Administrator",
+ "module": "SAMDELL SMS",
+ "name": "Library",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Library"
+}

@@ -1,0 +1,369 @@
+{% extends "templates/web.html" %}
+{% block navbar %}
+{% if show_language_picker %}
+	{{ super() }}
+{% endif %}
+{% endblock %}
+{% macro email_login_body() -%}
+{% if not disable_user_pass_login or (ldap_settings and ldap_settings.enabled) %}
+<div class="page-card-body">
+	<div class="login-error-banner">
+		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<use href="#es-line-alert-triangle"></use>
+		</svg>
+		<span></span>
+	</div>
+	<div class="form-group">
+		<label class="form-label" for="login_email">{{ login_label or _("Email")}}</label>
+		<div class="email-field">
+			<input type="text" id="login_email" class="form-control"
+				placeholder="{% if login_name_placeholder %}{{ login_name_placeholder  }}{% else %}{{ _('jane@example.com') }}{% endif %}"
+				required autofocus autocomplete="username">
+
+			<svg class="field-icon email-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+				xmlns="http://www.w3.org/2000/svg">
+				<use class="es-lock" href="#es-line-email"></use>
+			</svg>
+		</div>
+		<p class="field-error"></p>
+	</div>
+
+	<div class="form-group">
+		<label class="form-label" for="login_password">{{ _("Password") }}</label>
+		<div class="password-field">
+			<input type="password" id="login_password" class="form-control" placeholder="•••••"
+				autocomplete="current-password" required>
+
+			<svg class="field-icon password-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+				xmlns="http://www.w3.org/2000/svg">
+					<use class="es-lock" href="#es-line-lock"></use>
+			</svg>
+			<svg toggle="#login_password" class="toggle-password" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<use href="#es-line-preview"></use>
+				</svg>
+		</div>
+		<p class="field-error"></p>
+		{% if not disable_user_pass_login %}
+		<p class="forgot-password-message">
+			<a href="#forgot">{{ _("Forgot password?") }}</a>
+		</p>
+		{% endif %}
+	</div>
+</div>
+{% endif %}
+<div class="page-card-actions">
+	{% if not disable_user_pass_login %}
+	<button class="btn btn-sm btn-default btn-block btn-login" type="submit">
+		{{ _("Continue") }}</button>
+	{% endif %}
+	{% if ldap_settings and ldap_settings.enabled %}
+	<button class="btn btn-sm {{ "btn-primary" if disable_user_pass_login else "btn-default" }} btn-block btn-login btn-ldap-login">
+		{{ _("Login with LDAP") }}</button>
+	{% endif %}
+	{% if login_with_email_link %}
+	<a href="#login-with-email-link"
+		class="btn btn-block btn-default btn-sm btn-login-option btn-login-with-email-link">
+		{{ _("Login with Email Link") }}</a>
+	{% endif %}
+	{% if social_login %}
+	<div class="social-logins text-center">
+		<div class="social-login-buttons">
+			{% for provider in provider_logins %}
+			<div class="login-button-wrapper">
+				<a href="{{ provider.auth_url }}"
+					class="btn btn-block btn-default btn-sm btn-login-option btn-{{ provider.name }}">
+					{% if provider.icon %}
+						{{ provider.icon }}
+					{% endif %}
+					{{ _("Login with {0}").format(provider.provider_name) }}</a>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+</div>
+{% endmacro %}
+
+{% block head_include %}
+{{ include_style('login.bundle.css') }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+	body { font-family: "Inter", system-ui, sans-serif; background: #faf7f2; }
+	.font-display { font-family: "Fraunces", Georgia, serif; }
+	.samdell-login-wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); height: 100vh; height: 100dvh; overflow: hidden; }
+	.samdell-login-brand {
+		position: relative; display: flex; flex-direction: column; justify-content: space-between;
+		padding: 3rem 3.5rem; color: #fff; overflow: hidden;
+		background-image:
+			radial-gradient(ellipse 60% 45% at 80% 15%, rgba(197, 160, 40, 0.22), transparent 70%),
+			radial-gradient(ellipse 50% 40% at 10% 90%, rgba(197, 160, 40, 0.14), transparent 70%),
+			linear-gradient(160deg, {{ branding.primary_color or '#6B3A2A' }} 0%, #4a2416 55%, #2f1509 100%);
+	}
+	.samdell-login-brand::before, .samdell-login-brand::after {
+		content: ""; position: absolute; border-radius: 9999px; border: 1px solid rgba(197, 160, 40, 0.14);
+		pointer-events: none;
+	}
+	.samdell-login-brand::before { width: 420px; height: 420px; top: -140px; right: -120px; }
+	.samdell-login-brand::after { width: 420px; height: 420px; bottom: -200px; left: -120px; }
+	.samdell-login-brand .brand-inner { display: flex; flex-direction: column; justify-content: center; flex: 1; position: relative; z-index: 1; }
+	.samdell-login-brand .brand-logo { width: 76px; height: 76px; object-fit: contain; border-radius: 14px; background: rgba(255,255,255,0.95); padding: 8px; margin-bottom: 1.75rem; box-shadow: 0 18px 40px -16px rgba(0,0,0,0.5); }
+	.samdell-login-brand .brand-mark {
+		width: 76px; height: 76px; display: flex; align-items: center; justify-content: center;
+		border-radius: 16px; background: rgba(255,255,255,0.96); box-shadow: 0 18px 40px -16px rgba(0,0,0,0.5);
+	}
+	.samdell-login-brand .brand-mark span { font-family: "Fraunces", Georgia, serif; font-size: 2rem; font-weight: 700; color: {{ branding.primary_color or '#6B3A2A' }}; }
+	.samdell-login-brand h1 { font-family: "Fraunces", Georgia, serif; font-size: 2.1rem; font-weight: 600; line-height: 1.3; margin: 0 0 1rem; }
+	.samdell-login-brand p { margin: 0 0 0.5rem; opacity: 0.92; line-height: 1.7; }
+	.samdell-login-brand p.tagline { font-size: 1.05rem; opacity: 0.95; max-width: 30rem; }
+	.samdell-login-brand p.motto { font-size: 0.85rem; opacity: 0.8; font-style: italic; letter-spacing: 0.02em; }
+	.samdell-login-brand .brand-foot { font-size: 0.8rem; opacity: 0.85; display: flex; align-items: center; gap: 0.6rem; position: relative; z-index: 1; }
+	.samdell-login-brand .brand-foot .badge { display: inline-block; width: 10px; height: 26px; border-radius: 2px; background: {{ branding.accent_color or '#C5A028' }}; }
+	.samdell-login-form { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem 1.5rem; background: #faf7f2; overflow-y: auto; }
+	.samdell-login-form .login-foot { position: absolute; bottom: 1.25rem; left: 0; right: 0; text-align: center; color: #8a7a6a; font-size: 0.8rem; }
+	.samdell-login-form .login-foot .dot { opacity: 0.5; padding: 0 0.4rem; }
+	.samdell-login-form .login-content { width: 100%; max-width: 400px; }
+	.samdell-login-form .page-card {
+		background: #ffffff; border: 1px solid #efe7db; border-radius: 1.25rem;
+		padding: 2.25rem; box-shadow: 0 24px 60px -30px rgba(60, 30, 14, 0.28);
+	}
+	.samdell-login-form .page-card-head { border: none; padding: 0 0 1.5rem; margin: 0 0 1.5rem; border-bottom: 1px solid #f0e8dc; justify-content: flex-start; }
+	.samdell-login-form .app-logo { width: 44px; height: 44px; object-fit: contain; border-radius: 10px; background: rgba(197,160,40,0.14); padding: 6px; }
+	.samdell-login-form .app-logo-text { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: rgba(197,160,40,0.14); font-family: "Fraunces", Georgia, serif; font-size: 1.2rem; font-weight: 700; color: {{ branding.primary_color or '#6B3A2A' }}; }
+	.samdell-login-form .page-card-head h4 { font-family: "Fraunces", Georgia, serif; font-size: 1.4rem; font-weight: 600; color: {{ branding.primary_color or '#6B3A2A' }}; margin: 0; }
+	.samdell-login-form .page-card-subtitle { color: #8a7a6a; font-size: 0.9rem; margin-top: 0.25rem; }
+	.samdell-login-form .form-label { color: #5c4a3a; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
+	.samdell-login-form .form-control {
+		border: 1px solid #e2d9cf; border-radius: 0.75rem; height: 48px; padding: 0.625rem 2.4rem 0.625rem 0.9rem;
+		font-size: 0.95rem; color: #3d2f26; transition: border-color .2s ease, box-shadow .2s ease;
+	}
+	.samdell-login-form .form-control:focus { border-color: {{ branding.accent_color or '#C5A028' }}; box-shadow: 0 0 0 3px rgba(197, 160, 40, 0.18); outline: none; }
+	.samdell-login-form .field-icon { color: #b3a48d; }
+	.samdell-login-form .page-card .page-card-actions .btn-login,
+	.samdell-login-form .page-card .page-card-actions .btn-ldap-login,
+	.samdell-login-form .page-card .page-card-actions .btn-primary,
+	.samdell-login-form .page-card .page-card-actions .btn-forgot {
+		background: {{ branding.primary_color or '#6B3A2A' }} !important; border: none; border-radius: 999px; height: 48px;
+		font-weight: 600; color: #fff !important; box-shadow: 0 12px 24px -12px rgba(76, 35, 18, 0.5);
+		transition: background .2s ease, transform .15s ease;
+	}
+	.samdell-login-form .page-card .page-card-actions .btn-login:hover,
+	.samdell-login-form .page-card .page-card-actions .btn-primary:hover,
+	.samdell-login-form .page-card .page-card-actions .btn-login:focus,
+	.samdell-login-form .page-card .page-card-actions .btn-login:active {
+		background: #542C1F !important; transform: translateY(-1px);
+	}
+	.samdell-login-form .page-card .page-card-actions .btn-login:disabled,
+	.samdell-login-form .page-card .page-card-actions .btn-forgot:disabled {
+		background: #8a6a55 !important; opacity: 1;
+	}
+	.samdell-login-form .page-card .page-card-actions .btn-login-option,
+	.samdell-login-form .page-card .page-card-actions .btn-default {
+		background: #fff; border: 1px solid #e2d9cf; border-radius: 999px; color: #5c4a3a; font-weight: 500;
+	}
+	.samdell-login-form .page-card .page-card-actions .btn-login-option:hover,
+	.samdell-login-form .page-card .page-card-actions .btn-default:hover {
+		border-color: {{ branding.accent_color or '#C5A028' }}; color: #3d2f26; background: #fff;
+	}
+	.samdell-login-form .forgot-password-message a, .samdell-login-form .sign-up-message a {
+		color: {{ branding.primary_color or '#6B3A2A' }}; font-weight: 600; text-decoration: none;
+	}
+	.samdell-login-form .forgot-password-message a:hover, .samdell-login-form .sign-up-message a:hover { color: {{ branding.accent_color or '#C5A028' }}; }
+	.samdell-login-form .login-error-banner { border-radius: 0.75rem; }
+	.samdell-login-brand .back-home { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.85rem; }
+	.samdell-login-brand .back-home:hover { color: {{ branding.accent_color or '#C5A028' }}; }
+	@media (max-width: 768px) {
+		.samdell-login-wrap { grid-template-columns: 1fr; }
+		.samdell-login-brand { display: none; }
+		.samdell-login-form .page-card { justify-content: center; box-shadow: none; }
+	}
+</style>
+{% endblock %}
+
+{% macro logo_section(title=null, subtitle=null) %}
+<div class="page-card-head">
+	{% if branding.logo %}
+	<img class="app-logo" src="{{ branding.logo }}">
+	{% else %}
+	<span class="app-logo-text">{{ abbr or "SM" }}</span>
+	{% endif %}
+	<div class="page-card-head-text">
+		<h4>{{ _(title) or _('Sign In') }}</h4>
+		{% if subtitle %}
+		<p class="page-card-subtitle">{{ _(subtitle) }}</p>
+		{% endif %}
+	</div>
+</div>
+{% endmacro %}
+
+{% block content %}
+<!-- {{ for_test }} -->
+<div class="samdell-login-wrap">
+	<aside class="samdell-login-brand">
+		<a href="/" class="back-home">
+			<svg class="w-4 h-4" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+			Back to website
+		</a>
+		<div class="brand-inner">
+			{% if branding.logo %}
+			<img class="brand-logo" src="{{ branding.logo }}" alt="{{ branding.school_name }}">
+			{% else %}
+			<div class="brand-mark"><span>{{ abbr or "SM" }}</span></div>
+			{% endif %}
+			<h1>{{ branding.school_name or _("Welcome") }}</h1>
+			{% if branding.tagline %}
+			<p class="tagline">{{ branding.tagline }}</p>
+			{% endif %}
+			{% if branding.school_motto %}
+			<p class="motto">"{{ branding.school_motto }}"</p>
+			{% endif %}
+		</div>
+		<div class="brand-foot">
+			<span class="badge"></span>
+			<span>One platform for every part of school life</span>
+		</div>
+	</aside>
+	<div class="samdell-login-form">
+		<div>
+			<noscript>
+				<div class="text-center my-5">
+					<h4>{{ _("Javascript is disabled on your browser") }}</h4>
+					<p class="text-muted">
+						{{ _("You need to enable JavaScript for your app to work.") }}<br>{{ _("To enable it follow the instructions in the following link: {0}").format("<a href='https://enable-javascript.com/'>enable-javascript.com</a></p>") }}
+					</p>
+				</div>
+			</noscript>
+			<section class='for-login'>
+				<div class="login-content page-card">
+					{{ logo_section(_('Sign In'), _('Welcome! Please sign in to continue.')) }}
+					<form class="form-signin form-login" role="form" novalidate>
+						{{ email_login_body() }}
+					</form>
+					{%- if not disable_signup and not disable_user_pass_login -%}
+					<div class="text-center sign-up-message">
+						{{ _("Don't have an account?") }}
+						<a href="#signup">{{ _("Sign up") }}</a>
+					</div>
+					{%- endif -%}
+				</div>
+			</section>
+
+			{%- if social_login -%}
+			<section class='for-email-login'>
+				<div class="login-content page-card">
+					{{ logo_section(_('Sign In'), _('Welcome! Please sign in to continue.')) }}
+					<form class="form-signin form-login" role="form" novalidate>
+					{{ email_login_body() }}
+					</form>
+					{%- if not disable_signup and not disable_user_pass_login -%}
+					<div class="text-center sign-up-message">
+						{{ _("Don't have an account?") }}
+						<a href="#signup">{{ _("Sign up") }}</a>
+					</div>
+					{%- endif -%}
+				</div>
+			</section>
+			{%- endif -%}
+			<section class='for-signup {{ "signup-disabled" if disable_signup else "" }}'>
+				<div class="login-content page-card">
+					{{ logo_section(_('Sign Up'), _("Let's setup your account.")) }}
+					{%- if not disable_signup -%}
+					{{ signup_form_template }}
+					{%- else -%}
+					<div class="signup-disabled-message">
+						<span class='indicator gray'>{{_("Signup Disabled")}}</span>
+						<p class="text-muted text-normal sign-up-message mt-1 mb-8">{{_("Signups have been disabled for this website.")}}</p>
+						<div><a href='/' class='btn btn-primary btn-md'>{{ _("Home") }}</a></div>
+					</div>
+					{%- endif -%}
+				</div>
+			</section>
+
+			<section class='for-forgot'>
+				<div class="login-content page-card">
+					{{ logo_section(_('Forgot Password?'), _("Please enter your email, we'll send you password reset link")) }}
+					<form class="form-signin form-forgot hide" role="form" novalidate>
+						<div class="page-card-body">
+							<div class="form-group">
+								<label class="form-label" for="forgot_email">{{ _("Email") }}</label>
+								<div class="email-field">
+									<input type="email" id="forgot_email" class="form-control"
+										placeholder="{{ _('jane@example.com') }}" required autofocus autocomplete="username">
+									<svg class="field-icon email-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<use class="es-lock" href="#es-line-email"></use>
+									</svg>
+								</div>
+								<p class="field-error"></p>
+							</div>
+						</div>
+						<div class="page-card-actions">
+							<button class="btn btn-sm btn-primary btn-block btn-signup btn-forgot"
+								type="submit" disabled>{{ _("Send Link") }}</button>
+						</div>
+					</form>
+					<div class="text-center sign-up-message">
+						<a href="#login">{{ _("Back to sign in") }}</a>
+					</div>
+				</div>
+			</section>
+
+			<section class='for-login-with-email-link'>
+				<div class="login-content page-card">
+					{{ logo_section(_('Sign In'), _('Welcome! Please sign in to continue.')) }}
+					<form class="form-signin form-login-with-email-link hide" role="form" novalidate>
+						<div class="page-card-body">
+							<div class="login-success-banner">
+								<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<use href="#es-line-alert-circle"></use>
+								</svg>
+								<span>{{ _("Please check your email.") }}</span>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="login_with_email_link_email">{{ _("Email") }}</label>
+								<div class="email-field">
+									<input type="email" id="login_with_email_link_email" class="form-control"
+										placeholder="{{ _('jane@example.com') }}" required autofocus autocomplete="username">
+									<svg class="field-icon email-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<use class="es-lock" href="#es-line-email"></use>
+									</svg>
+								</div>
+								<p class="field-error"></p>
+							</div>
+						</div>
+						<div class="page-card-actions">
+							<p class="resend-link">
+								{{ _("Didn't receive the link?") }} <a href="#" class="btn-resend-link">{{ _("Resend") }}</a>
+							</p>
+							<button class="btn btn-sm btn-primary btn-block btn-login btn-login-with-email-link"
+								type="submit">{{ _("Send login link") }}</button>
+							<a href="#login" class="btn btn-sm btn-default btn-block btn-login-option">
+								{{ _("Login with password") }}</a>
+						</div>
+					</form>
+					{%- if not disable_signup -%}
+					<div class="text-center sign-up-message">
+						{{ _("Don't have an account?") }}
+						<a href="#signup">{{ _("Sign up") }}</a>
+					</div>
+					{%- endif -%}
+				</div>
+			</section>
+		</div>
+		<div class="login-foot">
+			<span>© {{ frappe.utils.now_datetime().year }} {{ branding.school_name or "Our School" }}</span>
+			{% if branding.school_motto %}<span class="dot">·</span><span>{{ branding.school_motto }}</span>{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block script %}
+<script>{% include "templates/includes/login/login.js" %}</script>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

@@ -1,0 +1,67 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "Master Grade Sheet Workflow",
+  "workflow_name": "Master Grade Sheet Workflow",
+  "document_type": "Master Grade Sheet",
+  "is_active": 1,
+  "override_status": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "Draft",
+    "doc_status": "0",
+    "is_default_state": 1,
+    "allow_edit": "Instructor"
+   },
+   {
+    "state": "Submitted",
+    "doc_status": "0",
+    "allow_edit": "Registrar"
+   },
+   {
+    "state": "Reviewed",
+    "doc_status": "0",
+    "allow_edit": "Principal"
+   },
+   {
+    "state": "Approved",
+    "doc_status": "0",
+    "allow_edit": "Principal"
+   },
+   {
+    "state": "Released",
+    "doc_status": "1",
+    "allow_edit": "Registrar",
+    "update_field": "workflow_state",
+    "update_value": "Released"
+   }
+  ],
+  "transitions": [
+   {
+    "state": "Draft",
+    "action": "Submit",
+    "next_state": "Submitted",
+    "allowed": "Instructor"
+   },
+   {
+    "state": "Submitted",
+    "action": "Review",
+    "next_state": "Reviewed",
+    "allowed": "Registrar"
+   },
+   {
+    "state": "Reviewed",
+    "action": "Approve",
+    "next_state": "Approved",
+    "allowed": "Principal"
+   },
+   {
+    "state": "Approved",
+    "action": "Release",
+    "next_state": "Released",
+    "allowed": "Registrar"
+   }
+  ]
+ }
+]

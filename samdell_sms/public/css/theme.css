@@ -69,6 +69,17 @@
 	color: var(--app-navbar-text);
 }
 
+/* Desktop navbar notifications icon */
+.desktop-navbar .desktop-notifications .dropdown-notifications .btn-reset,
+.desktop-navbar .desktop-notifications .dropdown-notifications .btn-reset svg {
+	color: var(--app-navbar-icon) !important;
+	stroke: var(--app-navbar-icon) !important;
+	fill: var(--app-navbar-icon) !important;
+}
+.desktop-navbar .desktop-notifications .dropdown-notifications .btn-reset:hover svg {
+	opacity: 0.8;
+}
+
 /* Page header */
 .page-head {
 	background: var(--app-page-head-bg) !important;
@@ -99,9 +110,10 @@
 	fill: var(--app-sidebar-text) !important;
 }
 
-.body-sidebar .standard-sidebar-item .sidebar-item-icon {
+.body-sidebar .standard-sidebar-item .sidebar-item-icon,
+.body-sidebar .standard-sidebar-item .sidebar-item-icon svg {
 	color: var(--app-sidebar-text) !important;
-	fill: var(--app-sidebar-text) !important;
+	stroke: var(--app-sidebar-text) !important;
 }
 
 .body-sidebar .standard-sidebar-item .sidebar-item-suffix {
@@ -118,9 +130,12 @@
 	color: var(--app-sidebar-active-text) !important;
 	fill: var(--app-sidebar-active-text) !important;
 }
-.body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-icon {
+.body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-icon,
+.body-sidebar .standard-sidebar-item.active-sidebar .sidebar-item-icon svg,
+.body-sidebar .standard-sidebar-item.selected .sidebar-item-icon,
+.body-sidebar .standard-sidebar-item.selected .sidebar-item-icon svg {
 	color: var(--app-sidebar-active-text) !important;
-	fill: var(--app-sidebar-active-text) !important;
+	stroke: var(--app-sidebar-active-text) !important;
 }
 
 .body-sidebar .standard-sidebar-item:not(.active-sidebar):has(a:not(.section-break)):hover {
@@ -192,18 +207,45 @@ a.btn.btn-danger:hover,
 .list-view .list-row-head {
 	background: var(--app-table-header-bg) !important;
 }
-.list-view .list-row-head > div {
+header.level.list-row-head.text-muted > div.level-right {
+	background-color: var(--app-table-header-bg) !important;
+}
+.list-view .list-row-head > div,
+.list-subject span.level-item,
+.list-subject span.list-header-meta {
 	color: var(--app-table-header-text) !important;
 	font-weight: 500;
 }
 
-/* List view — even rows */
-.list-row-container:nth-child(even) {
+/* List view — even rows. ERPNext v16 list view uses div-based flex rows, not
+   <tr>. The repeating unit is .list-row-container inside .list-view-main, and
+   each row carries a .level-right div that must inherit the row colour. */
+.list-row-container:nth-child(even),
+.list-row-container:nth-child(even) .list-row {
+	background: var(--app-table-even-bg) !important;
+}
+.list-row-container:nth-child(even) .level-right {
 	background: var(--app-table-even-bg) !important;
 }
 
 /* List view — row hover */
-.list-row-container:hover {
+.list-row-container:hover,
+.list-row-container:hover .list-row {
+	background: var(--app-table-row-hover-bg) !important;
+	cursor: pointer;
+}
+.list-row-container:hover .level-right {
+	background: var(--app-table-row-hover-bg) !important;
+}
+
+/* Fallback for genuine <table> views (Report Builder, Query Report) */
+.table tbody tr:nth-child(even),
+.dataTable tbody tr:nth-child(even) {
+	background: var(--app-table-even-bg) !important;
+}
+.table tbody tr:hover,
+.dataTable tbody tr:hover,
+.list-view-table tbody tr:hover {
 	background: var(--app-table-row-hover-bg) !important;
 }
 
@@ -339,6 +381,24 @@ select.form-control option:checked {
 	.page-head {
 		padding: 8px 12px;
 	}
+}
+
+/* Desktop home icon grid */
+.desktop-icon .icon-container:not(.folder-icon) {
+	background: var(--app-primary) !important;
+}
+.desktop-icon .desktop-alphabet {
+	color: var(--app-accent-color) !important;
+}
+
+/* App switcher / workspaces submenu icons (letter style) */
+.frappe-menu .dropdown-menu-item .icon-container,
+.sidebar-header-menu .dropdown-menu-item .icon-container {
+	background: var(--app-primary) !important;
+}
+.frappe-menu .dropdown-menu-item .icon-container .desktop-alphabet,
+.sidebar-header-menu .dropdown-menu-item .icon-container .desktop-alphabet {
+	color: var(--app-btn-primary-text) !important;
 }
 
 /* Accessibility — high contrast */

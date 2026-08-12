@@ -1,0 +1,123 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 0,
+ "allow_rename": 1,
+ "autoname": "",
+ "creation": "2026-07-30 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "policy_tab",
+  "double_promotion_band_start",
+  "double_promotion_band_end",
+  "column_break_band",
+  "early_grades_start",
+  "early_grades_end",
+  "thresholds_tab",
+  "minimum_average_early_grades",
+  "minimum_average_current_band",
+  "grade_sequence_tab",
+  "grade_sequence"
+ ],
+ "fields": [
+  {
+   "fieldname": "policy_tab",
+   "fieldtype": "Tab Break",
+   "label": "Policy Bands"
+  },
+  {
+   "fieldname": "double_promotion_band_start",
+   "fieldtype": "Link",
+   "label": "Double-Promotion Band Start",
+   "options": "Program"
+  },
+  {
+   "fieldname": "double_promotion_band_end",
+   "fieldtype": "Link",
+   "label": "Double-Promotion Band End",
+   "options": "Program"
+  },
+  {
+   "fieldname": "column_break_band",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "early_grades_start",
+   "fieldtype": "Link",
+   "label": "Early-Grade Reference Start",
+   "options": "Program"
+  },
+  {
+   "fieldname": "early_grades_end",
+   "fieldtype": "Link",
+   "label": "Early-Grade Reference End",
+   "options": "Program"
+  },
+  {
+   "fieldname": "thresholds_tab",
+   "fieldtype": "Tab Break",
+   "label": "Thresholds"
+  },
+  {
+   "default": "90",
+   "fieldname": "minimum_average_early_grades",
+   "fieldtype": "Percent",
+   "label": "Minimum Early-Grade Average"
+  },
+  {
+   "default": "90",
+   "fieldname": "minimum_average_current_band",
+   "fieldtype": "Percent",
+   "label": "Minimum Current-Band Average"
+  },
+  {
+   "fieldname": "grade_sequence_tab",
+   "fieldtype": "Tab Break",
+   "label": "Grade Sequence"
+  },
+  {
+   "fieldname": "grade_sequence",
+   "fieldtype": "Table",
+   "label": "Grade Sequence",
+   "options": "Grade Sequence Row"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-07-30 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "SAMDELL SMS",
+ "name": "Promotion Policy",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Administrator",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

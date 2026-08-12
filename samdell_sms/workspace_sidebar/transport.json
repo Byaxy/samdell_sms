@@ -1,0 +1,137 @@
+{
+ "app": "samdell_sms",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "header_icon": "bus",
+ "idx": 6,
+ "items": [
+  {
+   "type": "Link",
+   "link_type": "Workspace",
+   "link_to": "Transport",
+   "label": "Home",
+   "icon": "home",
+   "child": 0,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Section Break",
+   "link_type": "DocType",
+   "label": "Fleet",
+   "icon": "car",
+   "child": 0,
+   "indent": 1,
+   "collapsible": 1,
+   "keep_closed": 1,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle",
+   "label": "Vehicle",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Log",
+   "label": "Vehicle Log",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Vehicle Service",
+   "label": "Vehicle Service",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Driver",
+   "label": "Driver",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Section Break",
+   "link_type": "DocType",
+   "label": "Students",
+   "icon": "users-round",
+   "child": 0,
+   "indent": 1,
+   "collapsible": 1,
+   "keep_closed": 1,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Student",
+   "label": "Student",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Student Group",
+   "label": "Student Group",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Section Break",
+   "link_type": "DocType",
+   "label": "Reports",
+   "icon": "sheet",
+   "child": 0,
+   "indent": 1,
+   "collapsible": 1,
+   "keep_closed": 1,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "Report",
+   "link_to": "Vehicle Expenses",
+   "label": "Vehicle Expenses",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  }
+ ],
+ "modified_by": "Administrator",
+ "module": "SAMDELL SMS",
+ "name": "Transport",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Transport"
+}

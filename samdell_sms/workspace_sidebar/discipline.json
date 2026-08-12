@@ -1,0 +1,159 @@
+{
+ "app": "samdell_sms",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "header_icon": "shield-alert",
+ "idx": 4,
+ "items": [
+  {
+   "type": "Link",
+   "link_type": "Workspace",
+   "link_to": "Discipline",
+   "label": "Home",
+   "icon": "home",
+   "child": 0,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Section Break",
+   "link_type": "DocType",
+   "label": "Student Conduct",
+   "icon": "users-round",
+   "child": 0,
+   "indent": 1,
+   "collapsible": 1,
+   "keep_closed": 1,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Student",
+   "label": "Student",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Student Group",
+   "label": "Student Group",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Student Log",
+   "label": "Student Log",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Student Leave Application",
+   "label": "Student Leave Application",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "Student Attendance",
+   "label": "Student Attendance",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Section Break",
+   "link_type": "DocType",
+   "label": "Communication",
+   "icon": "megaphone",
+   "child": 0,
+   "indent": 1,
+   "collapsible": 1,
+   "keep_closed": 1,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "School Announcement",
+   "label": "School Announcement",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "DocType",
+   "link_to": "SMS Alert Log",
+   "label": "SMS Alert Log",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Section Break",
+   "link_type": "DocType",
+   "label": "Reports",
+   "icon": "sheet",
+   "child": 0,
+   "indent": 1,
+   "collapsible": 1,
+   "keep_closed": 1,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "Report",
+   "link_to": "Absent Student Report",
+   "label": "Absent Student Report",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  },
+  {
+   "type": "Link",
+   "link_type": "Report",
+   "link_to": "Student Monthly Attendance Sheet",
+   "label": "Student Monthly Attendance Sheet",
+   "child": 1,
+   "indent": 0,
+   "collapsible": 1,
+   "keep_closed": 0,
+   "show_arrow": 0
+  }
+ ],
+ "modified_by": "Administrator",
+ "module": "SAMDELL SMS",
+ "name": "Discipline",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Discipline"
+}

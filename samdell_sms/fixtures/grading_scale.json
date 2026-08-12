@@ -1,0 +1,14 @@
+[
+ {
+  "doctype": "Grading Scale",
+  "name": "SAMDELL SMS O/S/T/F",
+  "grading_scale_name": "SAMDELL SMS O/S/T/F",
+  "description": "Standard grading scale for Grades 1 and above: Outstanding (95-100), Satisfactory (85-94), Trying (75-84), Failure (below 75)",
+  "intervals": [
+   {"grade_code": "O", "threshold": 95},
+   {"grade_code": "S", "threshold": 85},
+   {"grade_code": "T", "threshold": 75},
+   {"grade_code": "F", "threshold": 0}
+  ]
+ }
+]

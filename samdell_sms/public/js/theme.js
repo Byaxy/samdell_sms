@@ -60,6 +60,9 @@ class Theme {
 		var cached = this.loadCache();
 		if (cached) this.applyConfig(cached);
 		await this.fetchAndApply();
+		this.applyDesktopPalette();
+		this.recolorDeskIcons();
+		this.recolorAppSwitcher();
 		this.subscribeRealtime();
 		this.setupMutationObserver();
 	}
@@ -68,6 +71,7 @@ class Theme {
 		try {
 			var result = await frappe.call({
 				method: "samdell_sms.api.get_theme",
+				type: "GET",
 			});
 			if (result && result.message) {
 				this.applyConfig(result.message);
@@ -86,6 +90,132 @@ class Theme {
 			var value = config[configKey];
 			if (value) root.style.setProperty(cssVar, value);
 		}
+		this.applyDesktopPalette();
+		this.recolorDeskIcons();
+		this.recolorAppSwitcher();
+	}
+
+	applyDesktopPalette() {
+		if (!window.frappe || !frappe.utils) return;
+		var primary = this.primaryColor();
+		frappe.utils.desktop_pallete = { blue: primary, gray: primary };
+	}
+
+	primaryColor() {
+		var value = getComputedStyle(document.documentElement)
+			.getPropertyValue("--app-primary")
+			.trim();
+		return value || "#6B3A2A";
+	}
+
+	accentColor() {
+		var value = getComputedStyle(document.documentElement)
+			.getPropertyValue("--app-accent-color")
+			.trim();
+		return value || "#C5A028";
+	}
+
+	recolorDeskIcons() {
+		if (!window.fetch) return;
+		var self = this;
+		var primary = this.primaryColor();
+		var accent = this.accentColor();
+		var targets = document.querySelectorAll(
+			'.desktop-icon .icon-container img.app-icon, .sidebar-header img.logo, img[src*="icons/desktop_icons/"]'
+		);
+		targets.forEach(function (img) {
+			if (img.closest && img.closest(".dropdown-menu-item")) return;
+			var src = img.getAttribute("src") || img.src || "";
+			if (src.indexOf("data:") === 0) return;
+			if (src.indexOf(".svg") === -1 && src.indexOf("icons/desktop_icons") === -1) return;
+			self.recolorImg(img, src, primary, accent);
+		});
+	}
+
+	recolorImg(img, src, primary, accent) {
+		var self = this;
+		var apply = function (svgText) {
+			if (!svgText) return;
+			var rewritten = self.rewriteFills(svgText, primary, accent);
+			img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(rewritten);
+		};
+		if (this.svgCache && this.svgCache[src]) {
+			apply(this.svgCache[src]);
+			return;
+		}
+		fetch(src)
+			.then(function (response) {
+				return response.text();
+			})
+			.then(function (text) {
+				if (!self.svgCache) self.svgCache = {};
+				self.svgCache[src] = text;
+				apply(text);
+			})
+			.catch(function () {});
+	}
+
+	recolorAppSwitcher() {
+		if (!window.fetch) return;
+		var self = this;
+		var primary = this.primaryColor();
+		var targets = document.querySelectorAll(
+			'.sidebar-header img[src*="icons/desktop_icons/"], .frappe-menu img[src*="icons/desktop_icons/"], .dropdown-menu-item img[src*="icons/desktop_icons/"]'
+		);
+		targets.forEach(function (img) {
+			var src = img.getAttribute("src") || img.src || "";
+			if (src.indexOf("data:") === 0) return;
+			if (src.indexOf(".svg") === -1) return;
+			self.recolorImgWhite(img, src, primary);
+		});
+	}
+
+	recolorImgWhite(img, src, primary) {
+		var self = this;
+		var apply = function (svgText) {
+			if (!svgText) return;
+			var rewritten = self.rewriteFillsWhite(svgText, primary);
+			img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(rewritten);
+		};
+		if (this.svgCache && this.svgCache[src]) {
+			apply(this.svgCache[src]);
+			return;
+		}
+		fetch(src)
+			.then(function (response) {
+				return response.text();
+			})
+			.then(function (text) {
+				if (!self.svgCache) self.svgCache = {};
+				self.svgCache[src] = text;
+				apply(text);
+			})
+			.catch(function () {});
+	}
+
+	rewriteFillsWhite(svg, primary) {
+		var primaryMap = ["#0289F7", "#004880", "#0E7159", "#06B58B", "#7B808A"];
+		var out = svg;
+		primaryMap.forEach(function (hex) {
+			out = out.split(hex).join(primary);
+			out = out.split(hex.toLowerCase()).join(primary);
+		});
+		return out;
+	}
+
+	rewriteFills(svg, primary, accent) {
+		var primaryMap = ["#0289F7", "#004880", "#0E7159", "#06B58B", "#7B808A"];
+		var out = svg;
+		primaryMap.forEach(function (hex) {
+			out = out.split(hex).join(primary);
+			out = out.split(hex.toLowerCase()).join(primary);
+		});
+		out = out.split('fill="white"').join('fill="' + accent + '"');
+		out = out.split('stroke="white"').join('stroke="' + accent + '"');
+		["#0981E3", "#FFFFFF", "#E7E5F9"].forEach(function (hex) {
+			out = out.split(hex).join(accent);
+		});
+		return out;
 	}
 
 	subscribeRealtime() {
@@ -115,6 +245,23 @@ class Theme {
 						img.src = logoSrc;
 						img.style.cssText = "width:110px;height:110px;object-fit:contain;display:block;margin:0 auto 20px;";
 					}
+				if (
+					(node.classList &&
+						(node.classList.contains("desktop-icon") ||
+							node.classList.contains("desktop-container") ||
+							node.classList.contains("sidebar-header") ||
+							node.classList.contains("sidebar-header-menu") ||
+							node.classList.contains("frappe-menu") ||
+							node.classList.contains("dropdown-menu-item"))) ||
+					(node.querySelector &&
+						(node.querySelector(".desktop-icon") ||
+							node.querySelector(".sidebar-header") ||
+							node.querySelector(".sidebar-header-menu") ||
+							node.querySelector(".frappe-menu img[src*='icons/desktop_icons/']")))
+				) {
+					self.recolorDeskIcons();
+					self.recolorAppSwitcher();
+				}
 				});
 			});
 		});

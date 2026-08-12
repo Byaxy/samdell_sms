@@ -1,0 +1,8 @@
+[
+ {"doctype": "Role", "name": "Registrar", "role_name": "Registrar", "desk_access": 1},
+ {"doctype": "Role", "name": "Discipline Officer", "role_name": "Discipline Officer", "desk_access": 1},
+ {"doctype": "Role", "name": "Transport Coordinator", "role_name": "Transport Coordinator", "desk_access": 1},
+ {"doctype": "Role", "name": "Librarian", "role_name": "Librarian", "desk_access": 1},
+ {"doctype": "Role", "name": "Front Desk", "role_name": "Front Desk", "desk_access": 1},
+ {"doctype": "Role", "name": "Principal", "role_name": "Principal", "desk_access": 1}
+]

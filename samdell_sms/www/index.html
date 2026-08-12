@@ -1,0 +1,294 @@
+{% extends "templates/web.html" %}
+{% block title %}{{ branding.school_name or "Welcome" }}{% endblock %}
+
+{% block head_include %}
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+	:root {
+		--mahogany: {{ branding.primary_color or "#6B3A2A" }};
+		--mahogany-deep: {{ branding.secondary_color or "#5C2E16" }};
+		--gold: {{ branding.accent_color or "#C5A028" }};
+	}
+	html { scroll-behavior: smooth; }
+	body { font-family: "Inter", system-ui, sans-serif; }
+	.font-display { font-family: "Fraunces", Georgia, serif; }
+	section { scroll-margin-top: 5rem; }
+	.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+	.reveal.visible { opacity: 1; transform: none; }
+	.nav-glass { backdrop-filter: blur(10px); background: rgba(24, 14, 8, 0.82); }
+	.gold-underline { position: relative; display: inline-block; }
+	.gold-underline::after {
+		content: ""; position: absolute; left: 0; bottom: -10px; transform: none;
+		width: 56px; height: 3px; border-radius: 2px; background: var(--gold);
+	}
+	.gold-underline-center::after {
+		left: 50%; transform: translateX(-50%);
+	}
+	.hero-grid {
+		background-image:
+			radial-gradient(ellipse 60% 45% at 78% 20%, rgba(197, 160, 40, 0.22), transparent 70%),
+			radial-gradient(ellipse 50% 40% at 15% 85%, rgba(197, 160, 40, 0.14), transparent 70%),
+			linear-gradient(160deg, {{ branding.primary_color or "#6B3A2A" }} 0%, #4a2416 55%, #2f1509 100%);
+	}
+	.feature-card:hover { transform: translateY(-6px); box-shadow: 0 22px 45px -18px rgba(76, 35, 18, 0.35); }
+	.announcement-card:hover { border-color: rgba(197, 160, 40, 0.55); }
+	.input-brand { border-color: #e2d9cf; transition: border-color .2s ease, box-shadow .2s ease; }
+	.input-brand:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(197, 160, 40, 0.18); outline: none; }
+</style>
+{% endblock %}
+
+{% block navbar %}
+<nav id="siteNav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+	<div class="mx-auto max-w-6xl px-5 sm:px-8">
+		<div class="flex items-center justify-between py-4">
+			<a href="#home" class="flex items-center gap-3 text-white">
+				{% if branding.logo %}
+				<img src="{{ branding.logo }}" alt="{{ branding.school_name }}" class="h-10 w-10 object-contain rounded-full bg-white p-0.5 shadow">
+				{% else %}
+				<span class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[{{ branding.accent_color or '#C5A028' }}] font-display text-xs sm:text-sm font-semibold">
+					{{ abbr or "SM" }}
+				</span>
+				{% endif %}
+				<span class="font-display text-base sm:text-lg font-semibold tracking-wide">{{ branding.school_name or "Our School" }}</span>
+			</a>
+			<div class="hidden md:flex items-center gap-7 text-sm font-medium text-white/85">
+				<a href="#about" class="hover:text-[{{ branding.accent_color or '#C5A028' }}] transition">About</a>
+				<a href="#programs" class="hover:text-[{{ branding.accent_color or '#C5A028' }}] transition">Programs</a>
+				<a href="#why" class="hover:text-[{{ branding.accent_color or '#C5A028' }}] transition">Why Us</a>
+				<a href="#announcements" class="hover:text-[{{ branding.accent_color or '#C5A028' }}] transition">News</a>
+			</div>
+			<div class="flex items-center gap-3">
+				<a href="/login" class="hidden sm:inline-flex text-sm font-medium text-white/85 hover:text-[{{ branding.accent_color or '#C5A028' }}] transition">Login</a>
+				<a href="#contact" class="inline-flex rounded-full px-5 py-2 text-sm font-semibold text-white shadow-lg transition hover:opacity-90" style="background: {{ branding.accent_color or '#C5A028' }};">
+					Request Information
+				</a>
+			</div>
+		</div>
+	</div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<style>
+	.hero-lines {
+		position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+	}
+	.hero-lines::before, .hero-lines::after {
+		content: ""; position: absolute; width: 420px; height: 420px; border-radius: 9999px;
+		border: 1px solid rgba(197, 160, 40, 0.14);
+	}
+	.hero-lines::before { top: -160px; right: -120px; }
+	.hero-lines::after { bottom: -200px; left: -120px; }
+</style>
+
+<!-- Hero -->
+<section id="home" class="hero-grid relative min-h-screen flex flex-col items-center justify-center text-center text-white overflow-hidden px-6 pt-24 pb-16">
+	<div class="hero-lines"></div>
+	<div class="relative z-10 max-w-3xl mx-auto">
+		{% if branding.logo %}
+		<img src="{{ branding.logo }}" alt="{{ branding.school_name }}" class="h-24 w-24 object-contain rounded-2xl bg-white/95 p-2 mx-auto mb-8 shadow-2xl">
+		{% else %}
+		<div class="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-2xl bg-white/95 shadow-2xl">
+			<span class="font-display text-4xl font-bold" style="color: {{ branding.primary_color or '#6B3A2A' }};">{{ abbr or "SM" }}</span>
+		</div>
+		{% endif %}
+		<p class="mb-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.3em]" style="color: {{ branding.accent_color or '#C5A028' }};">
+			{{ branding.school_motto or "Excellence • Discipline • Service" }}
+		</p>
+		<h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-semibold leading-[1.05] mb-6">{{ branding.school_name or "Our School" }}</h1>
+		{% if branding.tagline %}
+		<p class="text-lg sm:text-xl text-white/85 max-w-xl mx-auto leading-relaxed mb-10">{{ branding.tagline }}</p>
+		{% endif %}
+		<a href="#contact" class="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-base font-semibold text-white shadow-xl transition hover:scale-[1.03] hover:opacity-90" style="background: {{ branding.accent_color or '#C5A028' }};">
+			Request Information
+			<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+		</a>
+	</div>
+	<a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition" aria-label="Scroll down">
+		<svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+	</a>
+</section>
+
+<!-- About -->
+<section id="about" class="py-24 px-6 bg-[#FDFAF5]">
+	<div class="max-w-4xl mx-auto text-center reveal">
+		<h2 class="gold-underline gold-underline-center font-display text-3xl sm:text-4xl font-semibold mb-12" style="color: {{ branding.primary_color or '#6B3A2A' }};">About Our School</h2>
+		<p class="text-lg text-[#5C5046] leading-relaxed">
+			{{ branding.school_name }} is committed to academic excellence, character development,
+			and serving our community. Every child is known, challenged, and supported to reach
+			their full potential.
+		</p>
+		{% if branding.waec_center_number %}
+		<p class="mt-6 text-sm font-medium text-[#8a7a5c]">WAEC Center No: {{ branding.waec_center_number }}</p>
+		{% endif %}
+	</div>
+</section>
+
+<!-- Programs -->
+<section id="programs" class="py-24 px-6" style="background: linear-gradient(180deg, #F8F2E9, #F5EFE5);">
+	<div class="max-w-5xl mx-auto">
+		<h2 class="gold-underline font-display text-3xl sm:text-4xl font-semibold mb-14 reveal" style="color: {{ branding.primary_color or '#6B3A2A' }};">Programs Offered</h2>
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+			{% for level in school_levels %}
+			<div class="feature-card reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-lg transition">
+				<div class="h-1 w-10 rounded-full mb-5" style="background: {{ branding.accent_color or '#C5A028' }};"></div>
+				<h3 class="font-display text-lg font-semibold mb-2" style="color: {{ branding.primary_color or '#6B3A2A' }};">{{ level }}</h3>
+				<p class="text-sm text-[#8a7a6a] leading-relaxed">A strong foundation for the next step.</p>
+			</div>
+			{% else %}
+			<p class="text-[#8a7a6a] col-span-full text-center">Program information coming soon.</p>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+<!-- Why This School -->
+<section id="why" class="py-24 px-6 bg-[#FDFAF5]">
+	<div class="max-w-5xl mx-auto">
+		<h2 class="gold-underline font-display text-3xl sm:text-4xl font-semibold mb-14 reveal" style="color: {{ branding.primary_color or '#6B3A2A' }};">Why This School</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+			{% for item in [
+				("📚", "Strong Academics", "Report cards, grade tracking, and national exam preparation."),
+				("💬", "Connected Parents", "Announcements and updates by SMS and WhatsApp."),
+				("⭐", "Character Building", "Values-led education in a caring Christian environment."),
+				("🏫", "From ECE to Grade 9", "One continuous path from early childhood through junior high."),
+			] %}
+			<div class="feature-card reveal text-center p-6 rounded-2xl bg-white shadow-sm hover:shadow-lg transition">
+				<div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full text-2xl" style="background: rgba(197,160,40,0.12);">{{ item[0] }}</div>
+				<h3 class="font-semibold mb-2" style="color: {{ branding.primary_color or '#6B3A2A' }};">{{ item[1] }}</h3>
+				<p class="text-sm text-[#8a7a6a] leading-relaxed">{{ item[2] }}</p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+<!-- Announcements -->
+<section id="announcements" class="py-24 px-6" style="background: linear-gradient(180deg, #F5EFE5, #EFE6D8);">
+	<div class="max-w-4xl mx-auto">
+		<h2 class="gold-underline font-display text-3xl sm:text-4xl font-semibold mb-14 reveal" style="color: {{ branding.primary_color or '#6B3A2A' }};">Announcements</h2>
+		{% for a in announcements %}
+		<article class="announcement-card reveal bg-white rounded-2xl p-7 mb-5 shadow-sm border-l-4 transition" style="border-color: {{ branding.accent_color or '#C5A028' }};">
+			<div class="flex items-center justify-between mb-2">
+				<h3 class="font-semibold text-lg" style="color: {{ branding.primary_color or '#6B3A2A' }};">{{ a.title }}</h3>
+				{% if a.publish_date %}
+				<span class="text-xs text-[#a08f76] whitespace-nowrap ml-4">{{ frappe.utils.format_datetime(a.publish_date, "dd MMM yyyy") }}</span>
+				{% endif %}
+			</div>
+			<p class="text-[#6f6152] text-sm leading-relaxed">{{ a.body or "" }}</p>
+		</article>
+		{% else %}
+		<p class="text-center text-[#8a7a6a]">No announcements right now. Check back soon!</p>
+		{% endfor %}
+	</div>
+</section>
+
+<!-- Contact / Request Info -->
+<section id="contact" class="py-24 px-6 bg-[#FDFAF5]">
+	<div class="max-w-3xl mx-auto reveal">
+		<h2 class="gold-underline font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: {{ branding.primary_color or '#6B3A2A' }};">Request Information</h2>
+		<p class="text-[#8a7a6a] mb-12">Tell us a little about yourself and we'll be in touch.</p>
+		<form id="enquiryForm" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+			<input type="text" name="full_name" placeholder="Full Name" required class="input-brand rounded-xl border bg-white px-4 py-3 text-[#3d2f26]">
+			<input type="tel" name="phone" placeholder="Phone" class="input-brand rounded-xl border bg-white px-4 py-3 text-[#3d2f26]">
+			<input type="email" name="email" placeholder="Email" required class="input-brand rounded-xl border bg-white px-4 py-3 text-[#3d2f26] md:col-span-2">
+			<textarea name="message" rows="4" placeholder="How can we help?" required class="input-brand rounded-xl border bg-white px-4 py-3 text-[#3d2f26] md:col-span-2"></textarea>
+			<button type="submit" class="md:col-span-2 rounded-full py-3.5 font-semibold text-white shadow-lg transition hover:opacity-90" style="background: {{ branding.primary_color or '#6B3A2A' }};">
+				Send Request
+			</button>
+		</form>
+		<div id="formMsg" class="text-center text-sm mt-5 text-[#6f6152]"></div>
+	</div>
+</section>
+{% endblock %}
+
+{% block footer %}
+<footer class="bg-[#2B140A] text-white">
+	<div class="mx-auto max-w-6xl px-6 py-14">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+			<div>
+				<div class="flex items-center gap-3 mb-4">
+					{% if branding.logo %}
+					<img src="{{ branding.logo }}" alt="" class="h-10 w-10 object-contain rounded-full bg-white p-0.5">
+					{% else %}
+					<span class="flex h-10 w-10 items-center justify-center rounded-full border-2 font-display text-xs sm:text-sm font-semibold" style="border-color: {{ branding.accent_color or '#C5A028' }}; color: {{ branding.accent_color or '#C5A028' }};">{{ abbr or "SM" }}</span>
+					{% endif %}
+					<span class="font-display text-lg font-semibold">{{ branding.school_name or "Our School" }}</span>
+				</div>
+				<p class="text-sm text-white/70 leading-relaxed">{{ branding.tagline or "" }}</p>
+			</div>
+			<div>
+				<h4 class="font-semibold mb-4 text-sm uppercase tracking-widest" style="color: {{ branding.accent_color or '#C5A028' }};">Contact</h4>
+				<ul class="space-y-3 text-sm text-white/75">
+					{% if branding.address %}<li class="flex gap-3"><span class="text-white/40">📍</span>{{ branding.address }}</li>{% endif %}
+					{% if branding.phone %}<li class="flex gap-3"><span class="text-white/40">📞</span>{{ branding.phone }}</li>{% endif %}
+					{% if branding.email %}<li class="flex gap-3"><span class="text-white/40">✉️</span>{{ branding.email }}</li>{% endif %}
+				</ul>
+			</div>
+			<div>
+				<h4 class="font-semibold mb-4 text-sm uppercase tracking-widest" style="color: {{ branding.accent_color or '#C5A028' }};">Explore</h4>
+				<ul class="space-y-3 text-sm text-white/75">
+					<li><a href="#about" class="hover:text-[{{ branding.accent_color or '#C5A028' }}] transition">About Our School</a></li>
+					<li><a href="#programs" class="hover:text-[{{ branding.accent_color or '#C5A028' }}] transition">Programs Offered</a></li>
+					<li><a href="#announcements" class="hover:text-[{{ branding.accent_color or '#C5A028' }}] transition">Announcements</a></li>
+					<li><a href="/login" class="hover:text-[{{ branding.accent_color or '#C5A028' }}] transition">Staff Login</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mt-12 pt-6 border-t border-white/10 text-center text-xs text-white/50">
+			© {{ frappe.utils.now_datetime().year }} {{ branding.school_name or "Our School" }} · {{ branding.school_motto or "" }}
+		</div>
+	</div>
+</footer>
+{% endblock %}
+
+{% block script %}
+<script>
+	window.addEventListener("scroll", function () {
+		var nav = document.getElementById("siteNav");
+		if (nav) {
+			if (window.scrollY > 40) { nav.classList.add("nav-glass", "shadow-lg"); }
+			else { nav.classList.remove("nav-glass", "shadow-lg"); }
+		}
+	});
+
+	frappe.ready(function () {
+		document.querySelectorAll(".reveal").forEach(function (el) {
+			new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add("visible"); });
+			}, { threshold: 0.12 }).observe(el);
+		});
+
+		var form = document.getElementById("enquiryForm");
+		if (form) form.addEventListener("submit", function (e) {
+			e.preventDefault();
+			var data = Object.fromEntries(new FormData(form));
+			frappe.call({
+				method: "samdell_sms.api.portal.submit_enquiry",
+				args: data,
+				callback: function (r) {
+					var msg = document.getElementById("formMsg");
+					if (r.message) {
+						msg.textContent = "Thank you! We'll be in touch soon.";
+						msg.style.color = "#16a34a";
+						form.reset();
+					} else {
+						msg.textContent = "Something went wrong. Please try again.";
+						msg.style.color = "#dc2626";
+					}
+				},
+				error: function () {
+					var msg = document.getElementById("formMsg");
+					msg.textContent = "Something went wrong. Please try again.";
+					msg.style.color = "#dc2626";
+				}
+			});
+		});
+	});
+</script>
+{% endblock %}
+

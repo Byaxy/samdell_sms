@@ -1,0 +1,162 @@
+{
+ "app": "samdell_sms",
+ "charts": [],
+ "content": "[{\"id\": \"a891a961f3\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Key Metrics</b></span>\", \"col\": 12}}, {\"id\": \"738f08054b\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Website Enquiries\", \"col\": 4}}, {\"id\": \"ab3d3f78af\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Student Applicants\", \"col\": 4}}, {\"id\": \"a0bb51fd27\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"c86463447a\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Links</b></span>\", \"col\": 12}}, {\"id\": \"fa2a054f63\", \"type\": \"card\", \"data\": {\"card_name\": \"Admissions\", \"col\": 4}}, {\"id\": \"7c16ac55e4\", \"type\": \"card\", \"data\": {\"card_name\": \"Communication\", \"col\": 4}}, {\"id\": \"132a444c2d\", \"type\": \"card\", \"data\": {\"card_name\": \"Student Lookup\", \"col\": 4}}]",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "phone",
+ "idx": 1,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Front Desk",
+ "link_type": "DocType",
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Admissions",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Applicant",
+   "link_type": "DocType",
+   "label": "Student Applicant",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Admission",
+   "link_type": "DocType",
+   "label": "Student Admission",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Website Enquiry",
+   "link_type": "DocType",
+   "label": "Website Enquiry",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Communication",
+   "link_count": 4,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Communication",
+   "link_type": "DocType",
+   "label": "Communication",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "SMS Center",
+   "link_type": "DocType",
+   "label": "SMS Center",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "SMS Alert Log",
+   "link_type": "DocType",
+   "label": "SMS Alert Log",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "WhatsApp Message",
+   "link_type": "DocType",
+   "label": "WhatsApp Message",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Student Lookup",
+   "link_count": 3,
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student",
+   "link_type": "DocType",
+   "label": "Student",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Guardian",
+   "link_type": "DocType",
+   "label": "Guardian",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  },
+  {
+   "type": "Link",
+   "link_to": "Student Category",
+   "link_type": "DocType",
+   "label": "Student Category",
+   "onboard": 0,
+   "hidden": 0,
+   "is_query_report": 0,
+   "link_count": 0
+  }
+ ],
+ "module": "SAMDELL SMS",
+ "name": "Front Desk",
+ "number_cards": [
+  {
+   "label": "Website Enquiries",
+   "number_card_name": "Website Enquiries"
+  },
+  {
+   "label": "Open Student Applicants",
+   "number_card_name": "Open Student Applicants"
+  }
+ ],
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [],
+ "title": "Front Desk",
+ "type": "Workspace"
+}
