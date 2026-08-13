@@ -1,6 +1,8 @@
 import frappe
 from frappe.model.document import Document
 
+from samdell_sms.api import notifications
+
 # Base template_name of the approved WhatsApp Templates document used for
 # announcements (e.g. a doc named "announcement-en" with template_name
 # "announcement"). send_whatsapp resolves this to the actual document name.
@@ -16,25 +18,28 @@ def on_update(doc, method):
 
 
 def dispatch_announcement(doc):
-	if not doc.publish_date or doc.flags.sms_sent:
+	if not doc.publish_date:
 		return
 
-	from samdell_sms.api.sms import send_sms
-	from samdell_sms.api.whatsapp import send_whatsapp
+	# Guard against re-sending when the announcement is saved again later.
+	if notifications._already_notified(notifications.CATEGORY_ANNOUNCEMENT, doc.doctype, doc.name):
+		return
 
 	guardians = _resolve_audience(doc)
 	if not guardians:
-		doc.flags.sms_sent = True
 		return
 
-	message = _build_message(doc)
-	for guardian in guardians:
-		if doc.send_sms:
-			send_sms(guardian, message, "Announcement", "School Announcement", doc.name)
-		if doc.send_whatsapp:
-			send_whatsapp(guardian, ANNOUNCEMENT_TEMPLATE, {"title": doc.title}, "Announcement", "School Announcement", doc.name)
-
-	doc.flags.sms_sent = True
+	notifications._dispatch(
+		guardians=guardians,
+		category=notifications.CATEGORY_ANNOUNCEMENT,
+		whatsapp_template=ANNOUNCEMENT_TEMPLATE,
+		whatsapp_params={"title": doc.title},
+		sms_message=_build_message(doc),
+		reference_doctype=doc.doctype,
+		reference_name=doc.name,
+		send_sms=bool(doc.send_sms),
+		send_whatsapp=bool(doc.send_whatsapp),
+	)
 
 
 def _resolve_audience(doc):
@@ -52,7 +57,7 @@ def _resolve_audience(doc):
 			pluck="student",
 		)
 		for student in students:
-			guardians.update(_student_guardians(student))
+			guardians.update(notifications.student_guardians(student))
 		targets.discard("Specific Class")
 
 	for target in targets:
@@ -71,17 +76,9 @@ def _resolve_audience(doc):
 			elif target == "Staff":
 				matches = _is_staff_student(student)
 			if matches:
-				guardians.update(_student_guardians(student))
+				guardians.update(notifications.student_guardians(student))
 
 	return guardians
-
-
-def _student_guardians(student):
-	return frappe.get_all(
-		"Student Guardian",
-		filters={"parent": student},
-		pluck="guardian",
-	)
 
 
 def _has_guardian(student):

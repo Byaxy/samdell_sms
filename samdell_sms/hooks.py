@@ -144,6 +144,8 @@ doc_events = {
 		"on_update": "samdell_sms.samdell_sms.doctype.school_announcement.school_announcement.on_update"
 	},
 	"Program Enrollment": {"on_submit": "samdell_sms.api.id_card.auto_create_id_card"},
+	"Fees": {"on_submit": "samdell_sms.api.notifications.notify_fee_due"},
+	"Master Grade Sheet": {"on_update": "samdell_sms.api.notifications.grade_release_on_update"},
 }
 
 # Fixtures
@@ -293,23 +295,11 @@ fixtures = [
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"samdell_sms.tasks.all"
-# 	],
-# 	"daily": [
-# 		"samdell_sms.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"samdell_sms.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"samdell_sms.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"samdell_sms.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"all": [
+		"samdell_sms.api.notifications.fee_paid_sweep",
+	],
+}
 
 # Testing
 # -------

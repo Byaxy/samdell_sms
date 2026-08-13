@@ -48,7 +48,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Category",
-   "options": "Fee Due\nLow Attendance\nExam Schedule\nGrade Release\nSchool Closure\nAnnouncement\nTransport Departure\nTransport Arrival\nOther",
+   "options": "Fee Due\nFee Paid\nLow Attendance\nExam Schedule\nGrade Release\nSchool Closure\nAnnouncement\nTransport Departure\nTransport Arrival\nOther",
    "reqd": 1
   },
   {

@@ -145,52 +145,58 @@ def _get_programs_in_range(start, end):
 
 
 def _get_early_grades_average(student, policy):
-	if not policy.early_grades_start or not policy.early_grades_end:
+	"""Average of a student's results during the early-grade band.
+
+	Only Master Grade Sheets from academic years in which the student was
+	enrolled in a program between early_grades_start and early_grades_end
+	are considered.
+	"""
+	start = policy.early_grades_start
+	end = policy.early_grades_end
+	if not start or not end:
 		return 0.0
 
-	grades = policy.early_grades_start
-	gradee = policy.early_grades_end
+	early_programs = _get_programs_in_range(start, end)
+	if not early_programs:
+		return 0.0
 
-	years = frappe.get_all(
-		"Academic Year",
-		fields=["name"],
-		order_by="year_start_date asc",
+	early_years = frappe.get_all(
+		"Program Enrollment",
+		filters={
+			"student": student,
+			"program": ["in", early_programs],
+			"docstatus": 1,
+		},
+		pluck="academic_year",
 	)
+	if not early_years:
+		return 0.0
 
-	term_names = frappe.get_all(
+	terms = frappe.get_all(
 		"Academic Term",
-		filters={"academic_year": ["in", [y.name for y in years]]},
+		filters={"academic_year": ["in", early_years]},
 		pluck="name",
 	)
 
-	avgs = []
-	for term in term_names:
-		mgs_list = frappe.get_all(
-			"Master Grade Sheet",
-			filters={
-				"docstatus": 1,
-			},
-			fields=["name"],
-		)
-		for mgs_name in mgs_list:
-			mgs = frappe.get_doc("Master Grade Sheet", mgs_name.name)
-			if mgs.academic_term != term:
-				continue
-			for entry in mgs.entries:
-				if entry.student == student and entry.overall_average:
-					avgs.append(flt(entry.overall_average))
-
-	return (sum(avgs) / len(avgs)) if avgs else 0.0
+	return _average_over_terms(student, terms)
 
 
 def _get_current_year_average(student, academic_year):
-	avgs = []
 	terms = frappe.get_all(
 		"Academic Term",
 		filters={"academic_year": academic_year},
 		pluck="name",
 	)
-	for term in terms:
+	return _average_over_terms(student, terms)
+
+
+def _average_over_terms(student, term_names):
+	"""Average a student's overall_average across submitted grade sheets of the given terms."""
+	if not term_names:
+		return 0.0
+
+	avgs = []
+	for term in term_names:
 		mgs_list = frappe.get_all(
 			"Master Grade Sheet",
 			filters={"academic_term": term, "docstatus": 1},
