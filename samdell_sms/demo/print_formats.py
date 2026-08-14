@@ -287,7 +287,7 @@ PROMOTION_STATEMENT_TEMPLATE = """{% set branding = branding_dict() %}
 <h3 class="title">CERTIFICATE OF PROMOTION</h3>
 <div class="student-name"><b>{{ frappe.db.get_value('Student', doc.student, 'student_name') }}</b></div>
 <div class="body-text">
-	Has <b>{{ 'satisfactorily' if doc.outcome in ('Promoted', 'Double Promoted') else 'not satisfactorily' }}</b> completed the academic work of
+	Has <b>{{ 'satisfactorily' if doc.outcome in ('Promoted', 'Double Promoted', 'Graduated') else 'not satisfactorily' }}</b> completed the academic work of
 	<b>{{ doc.current_program }}</b> for the academic year <b>{{ doc.academic_year }}</b>, and is:
 </div>
 <div class="outcomes">
@@ -297,8 +297,8 @@ PROMOTION_STATEMENT_TEMPLATE = """{% set branding = branding_dict() %}
 	3. Retained in Grade {{ doc.current_program }} ______<br>
 	4. Asked not to re-enroll next year ______<br>
 </div>
-{% if doc.outcome in ('Promoted', 'Double Promoted') %}
-<div style="text-align:center;"><span class="stamp">PROMOTED</span></div>
+{% if doc.outcome in ('Promoted', 'Double Promoted') or doc.outcome == 'Graduated' %}
+<div style="text-align:center;"><span class="stamp">{{ 'GRADUATED' if doc.outcome == 'Graduated' else 'PROMOTED' }}</span></div>
 {% endif %}
 <div style="margin-top:6mm; font-size:12pt;">This {{ frappe.utils.formatdate(frappe.utils.today(), 'dd') }} day of {{ frappe.utils.formatdate(frappe.utils.today(), 'MMMM') }} A.D. {{ frappe.utils.formatdate(frappe.utils.today(), 'YYYY') }}.</div>
 <table class="sig">

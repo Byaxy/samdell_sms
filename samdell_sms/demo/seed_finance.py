@@ -34,10 +34,15 @@ def run():
 def _pick_student():
 	# Prefer a Grade 7 student so the receipt pairs nicely with the promo story.
 	for grade in ["Grade 7", "Grade 4", "Grade 1"]:
-		student = frappe.db.get_value(
-			"Program Enrollment",
-			{"program": grade, "docstatus": 1},
-			"student",
+		batch = frappe.db.get_value("Student Batch Name", {"school_grade": grade}, "name")
+		student = (
+			frappe.db.get_value(
+				"Program Enrollment",
+				{"student_batch_name": batch, "docstatus": 1},
+				"student",
+			)
+			if batch
+			else None
 		)
 		if student:
 			return student

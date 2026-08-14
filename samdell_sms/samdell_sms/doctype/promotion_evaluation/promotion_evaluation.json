@@ -40,7 +40,7 @@
    "fieldname": "current_program",
    "fieldtype": "Link",
    "label": "Current Grade",
-   "options": "Program"
+   "options": "School Grade"
   },
   {
    "fieldname": "column_break_averages",

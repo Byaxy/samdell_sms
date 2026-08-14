@@ -7,16 +7,16 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "program",
+  "school_grade",
   "sequence_no"
  ],
  "fields": [
   {
-   "fieldname": "program",
+   "fieldname": "school_grade",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Program",
-   "options": "Program",
+   "label": "School Grade",
+   "options": "School Grade",
    "reqd": 1
   },
   {

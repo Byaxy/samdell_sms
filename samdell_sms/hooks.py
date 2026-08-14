@@ -154,6 +154,7 @@ doc_events = {
 fixtures = [
 	"Grading Scale",
 	"Workflow",
+	"School Grade",
 	{
 		"dt": "Role",
 		"filters": [

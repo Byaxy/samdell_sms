@@ -1,0 +1,107 @@
+[
+	{
+		"doctype": "School Grade",
+		"name": "Nursery",
+		"grade_name": "Nursery",
+		"level": "Early Childhood",
+		"sort_order": 1
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Pre-K",
+		"grade_name": "Pre-K",
+		"level": "Early Childhood",
+		"sort_order": 2
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Kindergarten",
+		"grade_name": "Kindergarten",
+		"level": "Early Childhood",
+		"sort_order": 3
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 1",
+		"grade_name": "Grade 1",
+		"level": "Elementary",
+		"sort_order": 4
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 2",
+		"grade_name": "Grade 2",
+		"level": "Elementary",
+		"sort_order": 5
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 3",
+		"grade_name": "Grade 3",
+		"level": "Elementary",
+		"sort_order": 6
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 4",
+		"grade_name": "Grade 4",
+		"level": "Elementary",
+		"sort_order": 7
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 5",
+		"grade_name": "Grade 5",
+		"level": "Elementary",
+		"sort_order": 8
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 6",
+		"grade_name": "Grade 6",
+		"level": "Elementary",
+		"sort_order": 9
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 7",
+		"grade_name": "Grade 7",
+		"level": "Junior High School",
+		"sort_order": 10
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 8",
+		"grade_name": "Grade 8",
+		"level": "Junior High School",
+		"sort_order": 11
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 9",
+		"grade_name": "Grade 9",
+		"level": "Junior High School",
+		"sort_order": 12
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 10",
+		"grade_name": "Grade 10",
+		"level": "Senior High School",
+		"sort_order": 13
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 11",
+		"grade_name": "Grade 11",
+		"level": "Senior High School",
+		"sort_order": 14
+	},
+	{
+		"doctype": "School Grade",
+		"name": "Grade 12",
+		"grade_name": "Grade 12",
+		"level": "Senior High School",
+		"sort_order": 15
+	}
+]

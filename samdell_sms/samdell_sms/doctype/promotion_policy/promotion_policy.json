@@ -25,34 +25,34 @@
    "fieldtype": "Tab Break",
    "label": "Policy Bands"
   },
-  {
-   "fieldname": "double_promotion_band_start",
-   "fieldtype": "Link",
-   "label": "Double-Promotion Band Start",
-   "options": "Program"
-  },
-  {
-   "fieldname": "double_promotion_band_end",
-   "fieldtype": "Link",
-   "label": "Double-Promotion Band End",
-   "options": "Program"
-  },
-  {
-   "fieldname": "column_break_band",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "early_grades_start",
-   "fieldtype": "Link",
-   "label": "Early-Grade Reference Start",
-   "options": "Program"
-  },
-  {
-   "fieldname": "early_grades_end",
-   "fieldtype": "Link",
-   "label": "Early-Grade Reference End",
-   "options": "Program"
-  },
+{
+    "fieldname": "double_promotion_band_start",
+    "fieldtype": "Link",
+    "label": "Double-Promotion Band Start",
+    "options": "School Grade"
+   },
+   {
+    "fieldname": "double_promotion_band_end",
+    "fieldtype": "Link",
+    "label": "Double-Promotion Band End",
+    "options": "School Grade"
+   },
+   {
+    "fieldname": "column_break_band",
+    "fieldtype": "Column Break"
+   },
+   {
+    "fieldname": "early_grades_start",
+    "fieldtype": "Link",
+    "label": "Early-Grade Reference Start",
+    "options": "School Grade"
+   },
+   {
+    "fieldname": "early_grades_end",
+    "fieldtype": "Link",
+    "label": "Early-Grade Reference End",
+    "options": "School Grade"
+   },
   {
    "fieldname": "thresholds_tab",
    "fieldtype": "Tab Break",

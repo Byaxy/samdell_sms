@@ -1,0 +1,15 @@
+[
+	{
+		"doctype": "Custom Field",
+		"name": "Student Batch Name-school_grade",
+		"dt": "Student Batch Name",
+		"fieldname": "school_grade",
+		"fieldtype": "Link",
+		"label": "School Grade",
+		"options": "School Grade",
+		"insert_after": "batch_name",
+		"in_list_view": 1,
+		"in_standard_filter": 1,
+		"description": "Stable grade (School Grade master) this yearly batch belongs to."
+	}
+]

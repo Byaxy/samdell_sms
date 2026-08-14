@@ -8,7 +8,20 @@ CURRENCY = "LRD"
 ACADEMIC_YEAR = "2025-2026"
 PREV_YEAR = "2024-2025"
 
-GRADES = ["ECE", "Kindergarten"] + [f"Grade {i}" for i in range(1, 10)]
+# Programs are the four ministry levels; grades live on School Grades/Batches.
+PROGRAMS = ["Early Childhood", "Elementary", "Junior High School", "Senior High School"]
+
+GRADES = ["Nursery", "Pre-K", "Kindergarten"] + [f"Grade {i}" for i in range(1, 10)]
+ALL_GRADES = ["Nursery", "Pre-K", "Kindergarten"] + [f"Grade {i}" for i in range(1, 13)]
+
+LEVEL_BY_GRADE = {
+	"Nursery": "Early Childhood",
+	"Pre-K": "Early Childhood",
+	"Kindergarten": "Early Childhood",
+	**{f"Grade {i}": "Elementary" for i in range(1, 7)},
+	**{f"Grade {i}": "Junior High School" for i in range(7, 10)},
+	**{f"Grade {i}": "Senior High School" for i in range(10, 13)},
+}
 
 # Realistic Liberian first/last names
 FIRST_NAMES = [
@@ -61,7 +74,8 @@ LAST_NAMES = [
 ]
 
 SUBJECTS = {
-	"ECE": ["Early Learning", "Numeracy", "Literacy"],
+	"Nursery": ["Early Learning", "Numeracy", "Literacy"],
+	"Pre-K": ["Early Learning", "Numeracy", "Literacy", "Art & Music"],
 	"Kindergarten": ["Early Learning", "Numeracy", "Literacy", "Art & Music"],
 	"Grade 1": ["English", "Mathematics", "Science", "Social Studies"],
 	"Grade 2": ["English", "Mathematics", "Science", "Social Studies"],
@@ -89,19 +103,20 @@ def run():
 	_clear_seed_data()
 
 	academic_year = _ensure_academic_year(ACADEMIC_YEAR)
-	prev_year = _ensure_academic_year(PREV_YEAR)
 
 	term_1 = _ensure_academic_term(academic_year, "Term 1")
 	term_2 = _ensure_academic_term(academic_year, "Term 2")
 
 	programs = _ensure_programs()
+	_ensure_school_grades()
 	_ensure_courses()
 	_grading_scale()
-	student_groups = _ensure_student_groups(programs, academic_year)
+	batches = _ensure_student_batches(academic_year)
+	student_groups = _ensure_student_groups(programs, batches, academic_year)
 
 	students_data = _make_students(programs)
 	students = _ensure_students(students_data)
-	_enroll_students(students, students_data, academic_year)
+	_enroll_students(students, students_data, academic_year, batches)
 	_populate_groups(students, students_data, student_groups)
 
 	_ensure_assessment_groups()
@@ -153,6 +168,7 @@ def _clear_seed_data():
 		"Program Enrollment",
 		"Student Group Student",
 		"Student Group",
+		"Student Batch Name",
 		"Student Guardian",
 		"Student",
 		"Guardian",
@@ -204,18 +220,47 @@ def _ensure_academic_term(academic_year, term_name):
 
 def _ensure_programs():
 	programs = {}
-	for grade in GRADES:
-		name = grade
-		if not frappe.db.exists("Program", name):
+	for level in PROGRAMS:
+		if not frappe.db.exists("Program", level):
 			frappe.get_doc(
 				{
 					"doctype": "Program",
-					"program_name": name,
-					"program_abbreviation": name[:3].upper(),
+					"program_name": level,
+					"program_abbreviation": level[:3].upper(),
 				}
 			).insert(ignore_permissions=True)
-		programs[grade] = name
+		programs[level] = level
 	return programs
+
+
+def _ensure_school_grades():
+	for grade in ALL_GRADES:
+		if not frappe.db.exists("School Grade", grade):
+			frappe.get_doc(
+				{
+					"doctype": "School Grade",
+					"grade_name": grade,
+					"level": LEVEL_BY_GRADE[grade],
+					"sort_order": ALL_GRADES.index(grade) + 1,
+				}
+			).insert(ignore_permissions=True)
+	return {grade: grade for grade in ALL_GRADES}
+
+
+def _ensure_student_batches(academic_year):
+	batches = {}
+	for grade in GRADES:
+		name = f"{grade} - {academic_year}"
+		if not frappe.db.exists("Student Batch Name", name):
+			frappe.get_doc(
+				{
+					"doctype": "Student Batch Name",
+					"batch_name": name,
+					"school_grade": grade,
+				}
+			).insert(ignore_permissions=True)
+		batches[grade] = name
+	return batches
 
 
 def _ensure_courses():
@@ -246,9 +291,10 @@ def _grading_scale():
 		)
 
 
-def _ensure_student_groups(programs, academic_year):
+def _ensure_student_groups(programs, batches, academic_year):
 	groups = {}
-	for grade, program in programs.items():
+	for grade in GRADES:
+		level = LEVEL_BY_GRADE[grade]
 		name = f"{grade} - {academic_year}"
 		if not frappe.db.exists("Student Group", name):
 			frappe.get_doc(
@@ -256,7 +302,8 @@ def _ensure_student_groups(programs, academic_year):
 					"doctype": "Student Group",
 					"student_group_name": name,
 					"group_based_on": "Batch",
-					"program": program,
+					"program": programs[level],
+					"batch": batches[grade],
 					"academic_year": academic_year,
 					"max_strength": 40,
 				}
@@ -270,7 +317,8 @@ def _make_students(programs):
 	random.seed(42)
 	students = []
 	count_by_grade = {
-		"ECE": 2,
+		"Nursery": 1,
+		"Pre-K": 1,
 		"Kindergarten": 2,
 		"Grade 1": 2,
 		"Grade 2": 2,
@@ -305,7 +353,7 @@ def _make_students(programs):
 					"first_name": first,
 					"last_name": last,
 					"grade": grade,
-					"program": programs[grade],
+					"program": programs[LEVEL_BY_GRADE[grade]],
 					"double_promo": is_double_candidate,
 					"target_average": target,
 				}
@@ -358,7 +406,7 @@ def _ensure_guardian(student_name):
 	return doc.name
 
 
-def _enroll_students(students, students_data, academic_year):
+def _enroll_students(students, students_data, academic_year, batches):
 	for s in students_data:
 		student = students[s["full_name"]]
 		if frappe.db.exists("Program Enrollment", {"student": student, "academic_year": academic_year}):
@@ -368,6 +416,7 @@ def _enroll_students(students, students_data, academic_year):
 				"doctype": "Program Enrollment",
 				"student": student,
 				"program": s["program"],
+				"student_batch_name": batches[s["grade"]],
 				"academic_year": academic_year,
 				"enrollment_date": today(),
 			}
@@ -417,6 +466,7 @@ def _ensure_assessment_plans(student_groups, programs, academic_year, term_1, te
 	plans = {}
 	global_slot = 0
 	for grade, group in student_groups.items():
+		level = LEVEL_BY_GRADE[grade]
 		subjects = SUBJECTS[grade]
 		for term in [term_1, term_2]:
 			slot = 0
@@ -433,7 +483,7 @@ def _ensure_assessment_plans(student_groups, programs, academic_year, term_1, te
 							"doctype": "Assessment Plan",
 							"assessment_name": name,
 							"student_group": group,
-							"program": programs[grade],
+							"program": programs[level],
 							"course": subj,
 							"assessment_group": f"Period {i}",
 							"academic_year": academic_year,
@@ -458,7 +508,7 @@ def _ensure_assessment_plans(student_groups, programs, academic_year, term_1, te
 						"doctype": "Assessment Plan",
 						"assessment_name": name,
 						"student_group": group,
-						"program": programs[grade],
+						"program": programs[level],
 						"course": subj,
 						"assessment_group": "End of Term Exam",
 						"academic_year": academic_year,
@@ -547,7 +597,7 @@ _LOW_SCORE_STUDENTS = {
 def _seed_master_grade_sheets(student_groups, academic_year, term_1, term_2):
 	from samdell_sms.api.grade_sheet import pull_results
 
-	for grade, group in student_groups.items():
+	for _grade, group in student_groups.items():
 		for term in [term_1, term_2]:
 			if frappe.db.exists("Master Grade Sheet", {"student_group": group, "academic_term": term}):
 				continue
@@ -584,10 +634,19 @@ def _seed_historical_mgs(students, students_data, academic_year):
 		(2024, "2024-2025", "Grade 2"),
 		(2025, "2025-2026", "Grade 3"),
 	]
-	for year_num, year_name, grade in years:
+	for _year_num, year_name, grade in years:
 		if year_name == academic_year:
 			continue
 		_ensure_academic_year(year_name)
+		batch = f"{grade} - {year_name}"
+		if not frappe.db.exists("Student Batch Name", batch):
+			frappe.get_doc(
+				{
+					"doctype": "Student Batch Name",
+					"batch_name": batch,
+					"school_grade": grade,
+				}
+			).insert(ignore_permissions=True)
 		group = f"{grade} - {year_name}"
 		if not frappe.db.exists("Student Group", group):
 			frappe.get_doc(
@@ -595,10 +654,27 @@ def _seed_historical_mgs(students, students_data, academic_year):
 					"doctype": "Student Group",
 					"student_group_name": group,
 					"group_based_on": "Batch",
-					"program": grade,
+					"program": LEVEL_BY_GRADE[grade],
+					"batch": batch,
 					"academic_year": year_name,
 				}
 			).insert(ignore_permissions=True)
+		for s in candidates:
+			student = students[s["full_name"]]
+			if frappe.db.exists("Program Enrollment", {"student": student, "academic_year": year_name}):
+				continue
+			enr = frappe.get_doc(
+				{
+					"doctype": "Program Enrollment",
+					"student": student,
+					"program": LEVEL_BY_GRADE[grade],
+					"student_batch_name": batch,
+					"academic_year": year_name,
+					"enrollment_date": today(),
+				}
+			)
+			enr.insert(ignore_permissions=True)
+			enr.submit()
 		term = _ensure_academic_term(year_name, "Term 1")
 		if frappe.db.exists("Master Grade Sheet", {"academic_term": term}):
 			continue
@@ -640,9 +716,10 @@ def _ensure_promotion_policy():
 		policy.minimum_average_early_grades = 90
 		policy.minimum_average_current_band = 90
 		changed = True
-	if not policy.grade_sequence:
-		for i, grade in enumerate(GRADES, start=1):
-			policy.append("grade_sequence", {"program": grade, "sequence_no": i})
+	if not policy.grade_sequence or {r.school_grade for r in policy.grade_sequence} != set(ALL_GRADES):
+		policy.grade_sequence = []
+		for i, grade in enumerate(ALL_GRADES, start=1):
+			policy.append("grade_sequence", {"school_grade": grade, "sequence_no": i})
 		changed = True
 	if changed:
 		policy.save(ignore_permissions=True)
@@ -894,7 +971,7 @@ def _seed_ece_progress_reports(students):
 	"""One ECE Progress Report per ECE student so the print format demos live."""
 	ece_students = frappe.get_all(
 		"Program Enrollment",
-		filters={"program": "ECE", "docstatus": 1},
+		filters={"program": "Early Childhood", "docstatus": 1},
 		fields=["student"],
 	)
 	term = frappe.get_all("Academic Term", limit=1, order_by="creation desc")

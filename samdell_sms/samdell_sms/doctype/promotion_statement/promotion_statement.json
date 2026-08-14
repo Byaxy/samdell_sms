@@ -41,7 +41,7 @@
    "fieldname": "current_program",
    "fieldtype": "Link",
    "label": "Current Grade",
-   "options": "Program"
+   "options": "School Grade"
   },
   {
    "fieldname": "column_break_results",
@@ -59,7 +59,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Outcome",
-   "options": "\nPromoted\nDouble Promoted\nConditioned\nRetained\nAsked Not to Re-Enroll"
+   "options": "\nPromoted\nDouble Promoted\nConditioned\nRetained\nAsked Not to Re-Enroll\nGraduated"
   },
   {
    "depends_on": "eval:doc.outcome == 'Conditioned'",
@@ -71,7 +71,7 @@
    "fieldname": "next_program",
    "fieldtype": "Link",
    "label": "Promoted To",
-   "options": "Program"
+   "options": "School Grade"
   },
   {
    "fieldname": "section_break_issuance",
