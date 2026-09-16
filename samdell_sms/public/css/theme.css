@@ -89,6 +89,49 @@
 	color: var(--app-page-head-text) !important;
 }
 
+/* Page header secondary buttons — white on light gold header for contrast (header-only).
+   Excludes primary/danger/cancel: danger rules below are ordered later so
+   header Cancel still renders red. Hover border tracks theme accent. */
+.page-head .btn.btn-default,
+.page-head .btn.btn-secondary,
+.page-head .btn.btn-default.btn-sm,
+.page-head .btn.btn-secondary.btn-sm,
+.page-head .btn.btn-secondary.btn-default,
+.page-head .custom-actions .btn.btn-default,
+.page-head .custom-actions .btn.btn-secondary,
+.page-head .actions-btn-group .btn.btn-default,
+.page-head .menu-btn-group .btn.btn-default,
+.page-head .page-actions .btn.btn-default,
+.page-head .page-actions .btn.btn-secondary {
+	background-color: #ffffff !important;
+	border-color: #E5E7EB !important;
+	color: #3D3D3D !important;
+	fill: #3D3D3D !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+	border-radius: 6px;
+	font-weight: 500;
+}
+
+.page-head .btn.btn-default span,
+.page-head .btn.btn-secondary span {
+	color: #3D3D3D !important;
+}
+
+.page-head .btn.btn-default:hover,
+.page-head .btn.btn-secondary:hover {
+	background-color: #ffffff !important;
+	border-color: var(--app-accent-color) !important;
+	color: #1A1A1A !important;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.page-head .btn.btn-default:active,
+.page-head .btn.btn-secondary:active {
+	transform: translateY(0) !important;
+	box-shadow: none !important;
+}
+
 /* Form tabs */
 .form-tabs .nav-item .nav-link {
 	color: var(--app-sidebar-text);
@@ -179,28 +222,88 @@
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 
-/* Danger buttons */
+/* ============================================================
+   DANGER / CANCEL BUTTONS
+   ERPNext v16 cancel: <button class="btn btn-secondary btn-default btn-sm" data-label="Cancel">
+   Bootstrap's .btn.btn-secondary wins at equal specificity.
+   Adding .btn-sm (4 classes + attribute) beats it cleanly.
+   Ordered AFTER the page-head white block so header Cancel stays red.
+   ============================================================ */
 .btn-danger,
-button.btn.btn-danger,
-a.btn.btn-danger,
-.btn.btn-secondary.btn-danger {
-	background: var(--app-btn-danger-bg) !important;
+.btn-red,
+.btn-cancel,
+.btn.btn-danger.btn-default.btn-sm,
+.btn.btn-secondary.btn-sm.btn-modal-secondary,
+.btn.btn-secondary.btn-default.btn-sm[data-label="Cancel"],
+.btn.btn-secondary.btn-default[data-label="Cancel"],
+[data-action="no"],
+[data-response="no"],
+.workflow-button-area .btn[data-action*="reject"],
+.workflow-button-area .btn[data-action*="cancel"],
+.workflow-button-area .btn[data-action*="decline"] {
+	background-color: var(--app-btn-danger-bg) !important;
 	border-color: var(--app-btn-danger-bg) !important;
-	transition: background 0.2s, transform 0.15s;
-}
-.btn-danger:hover,
-button.btn.btn-danger:hover,
-a.btn.btn-danger:hover,
-.btn.btn-secondary.btn-danger:hover {
-	background: var(--app-btn-danger-hover) !important;
-	border-color: var(--app-btn-danger-hover) !important;
-	transform: translateY(-1px);
+	color: #ffffff !important;
+	border-radius: 6px;
+	font-weight: 500;
+	transition: all 0.18s ease;
 }
 
-/* Cancel buttons */
-.btn-cancel {
-	color: var(--app-btn-danger-bg) !important;
+/* Text spans inside cancel button */
+.btn.btn-danger.btn-default.btn-sm span,
+.btn.btn-danger.btn-default.btn-sm span span,
+.btn.btn-secondary.btn-default[data-label="Cancel"] span,
+.btn.btn-secondary.btn-default[data-label="Cancel"] span span {
+	color: #ffffff !important;
+}
+
+.btn-danger:hover,
+.btn-red:hover,
+.btn-cancel:hover,
+.btn.btn-danger.btn-default.btn-sm:hover,
+.btn.btn-secondary.btn-sm.btn-modal-secondary:hover,
+.btn.btn-secondary.btn-default.btn-sm[data-label="Cancel"]:hover,
+.btn.btn-secondary.btn-default[data-label="Cancel"]:hover,
+[data-action="no"]:hover,
+[data-response="no"]:hover {
+	background-color: var(--app-btn-danger-hover) !important;
+	border-color: var(--app-btn-danger-hover) !important;
+	color: #ffffff !important;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 10px rgba(220, 38, 38, 0.28);
+}
+
+.btn-danger:active,
+.btn-cancel:active,
+.btn.btn-danger.btn-default.btn-sm:active,
+.btn.btn-secondary.btn-default[data-label="Cancel"]:active {
+	transform: translateY(0) !important;
+	box-shadow: none !important;
+}
+
+/* Guard: Cancel/No inside the page-head must stay red, never white */
+.page-head .btn.btn-secondary.btn-default[data-label="Cancel"],
+.page-head .btn.btn-secondary.btn-default.btn-sm[data-label="Cancel"],
+.page-head .btn.btn-secondary.btn-sm.btn-modal-secondary,
+.page-head [data-action="no"],
+.page-head [data-response="no"] {
+	background-color: var(--app-btn-danger-bg) !important;
 	border-color: var(--app-btn-danger-bg) !important;
+	color: #ffffff !important;
+}
+
+.page-head .btn.btn-secondary.btn-default[data-label="Cancel"] span,
+.page-head .btn.btn-secondary.btn-default[data-label="Cancel"] span span,
+.page-head [data-action="no"] span {
+	color: #ffffff !important;
+}
+
+.page-head .btn.btn-secondary.btn-default[data-label="Cancel"]:hover,
+.page-head [data-action="no"]:hover,
+.page-head [data-response="no"]:hover {
+	background-color: var(--app-btn-danger-hover) !important;
+	border-color: var(--app-btn-danger-hover) !important;
+	color: #ffffff !important;
 }
 
 /* List view — table header */
