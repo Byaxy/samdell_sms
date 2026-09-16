@@ -88,7 +88,7 @@
 <!-- Hero -->
 <section id="home" class="hero-grid relative min-h-screen flex flex-col items-center justify-center text-center text-white overflow-hidden px-6 pt-24 pb-16">
 	<div class="hero-lines"></div>
-	<div class="relative z-10 max-w-3xl mx-auto">
+	<div class="relative z-10 max-w-5xl mx-auto">
 		{% if branding.logo %}
 		<img src="{{ branding.logo }}" alt="{{ branding.school_name }}" class="h-24 w-24 object-contain rounded-2xl bg-white/95 p-2 mx-auto mb-8 shadow-2xl">
 		{% else %}
@@ -99,7 +99,7 @@
 		<p class="mb-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.3em]" style="color: {{ branding.accent_color or '#C5A028' }};">
 			{{ branding.school_motto or "Excellence • Discipline • Service" }}
 		</p>
-		<h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-semibold leading-[1.05] mb-6">{{ branding.school_name or "Our School" }}</h1>
+		<h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-semibold leading-[1.05] mb-6 text-white">{{ branding.school_name or "Our School" }}</h1>
 		{% if branding.tagline %}
 		<p class="text-lg sm:text-xl text-white/85 max-w-xl mx-auto leading-relaxed mb-10">{{ branding.tagline }}</p>
 		{% endif %}
