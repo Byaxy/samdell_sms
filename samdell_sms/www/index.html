@@ -92,8 +92,8 @@
 		{% if branding.logo %}
 		<img src="{{ branding.logo }}" alt="{{ branding.school_name }}" class="h-24 w-24 object-contain rounded-2xl bg-white/95 p-2 mx-auto mb-8 shadow-2xl">
 		{% else %}
-		<div class="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-2xl bg-white/95 shadow-2xl">
-			<span class="font-display text-4xl font-bold" style="color: {{ branding.primary_color or '#6B3A2A' }};">{{ abbr or "SM" }}</span>
+		<div class="mx-auto mb-8 flex h-24 w-fit min-w-[6rem] items-center justify-center whitespace-nowrap rounded-2xl bg-white/95 px-6 shadow-2xl">
+			<span class="font-display text-4xl font-bold whitespace-nowrap leading-none" style="color: {{ branding.primary_color or '#6B3A2A' }};">{{ abbr or "SM" }}</span>
 		</div>
 		{% endif %}
 		<p class="mb-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.3em]" style="color: {{ branding.accent_color or '#C5A028' }};">
