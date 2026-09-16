@@ -726,8 +726,7 @@ def _ensure_promotion_policy():
 
 
 def _ensure_workflow_states():
-	"""Frappe's `WorkflowState` docs (standalone) are required by `frappe.desk.form.meta.load_workflows`.
-	The workflow fixture captures only the `Workflow` record, so create the referenced states explicitly."""
+	"""Idempotent safety net for demo seeding (canonical source is fixtures/workflow_state.json)."""
 	for state in ["Draft", "Submitted", "Reviewed", "Approved", "Released"]:
 		if not frappe.db.exists("Workflow State", state):
 			frappe.get_doc(

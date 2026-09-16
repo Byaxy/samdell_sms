@@ -1,0 +1,22 @@
+[
+	{
+		"doctype": "Workflow Action Master",
+		"name": "Submit",
+		"workflow_action_name": "Submit"
+	},
+	{
+		"doctype": "Workflow Action Master",
+		"name": "Review",
+		"workflow_action_name": "Review"
+	},
+	{
+		"doctype": "Workflow Action Master",
+		"name": "Approve",
+		"workflow_action_name": "Approve"
+	},
+	{
+		"doctype": "Workflow Action Master",
+		"name": "Release",
+		"workflow_action_name": "Release"
+	}
+]

@@ -1,0 +1,32 @@
+[
+	{
+		"doctype": "Workflow State",
+		"name": "Draft",
+		"workflow_state_name": "Draft",
+		"style": ""
+	},
+	{
+		"doctype": "Workflow State",
+		"name": "Submitted",
+		"workflow_state_name": "Submitted",
+		"style": "Primary"
+	},
+	{
+		"doctype": "Workflow State",
+		"name": "Reviewed",
+		"workflow_state_name": "Reviewed",
+		"style": "Warning"
+	},
+	{
+		"doctype": "Workflow State",
+		"name": "Approved",
+		"workflow_state_name": "Approved",
+		"style": "Info"
+	},
+	{
+		"doctype": "Workflow State",
+		"name": "Released",
+		"workflow_state_name": "Released",
+		"style": "Success"
+	}
+]

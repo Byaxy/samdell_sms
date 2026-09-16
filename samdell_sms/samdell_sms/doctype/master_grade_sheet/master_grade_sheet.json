@@ -5,6 +5,7 @@
  "autoname": "MGS-.YYYY.-.#####",
  "creation": "2026-07-30 12:00:00.000000",
  "doctype": "DocType",
+ "description": "One sheet per class x term. Create a sheet, choose Student Group and Academic Term, save, then use Pull Results to compute averages, ratings and ranks from Assessment Results.",
  "engine": "InnoDB",
  "field_order": [
   "student_group",
