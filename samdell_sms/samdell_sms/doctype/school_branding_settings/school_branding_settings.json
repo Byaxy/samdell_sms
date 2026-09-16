@@ -13,10 +13,6 @@
    "tagline",
    "logo",
    "favicon",
-   "column_break_branding",
-   "primary_color",
-   "secondary_color",
-   "accent_color",
    "school_levels",
    "contact_tab",
    "address",
@@ -58,25 +54,6 @@
    "fieldname": "favicon",
    "fieldtype": "Attach Image",
    "label": "Favicon"
-  },
-  {
-   "fieldname": "column_break_branding",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "primary_color",
-   "fieldtype": "Color",
-   "label": "Primary Color"
-  },
-  {
-   "fieldname": "secondary_color",
-   "fieldtype": "Color",
-   "label": "Secondary Color"
-  },
-  {
-   "fieldname": "accent_color",
-   "fieldtype": "Color",
-   "label": "Accent Color"
   },
    {
     "fieldname": "school_levels",

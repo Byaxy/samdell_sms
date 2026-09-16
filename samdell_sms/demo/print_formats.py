@@ -13,6 +13,8 @@ which exposes `doc` and the full `frappe` module to the template.
 import frappe
 from frappe.utils import flt
 
+from samdell_sms.api.branding import get_school_colors
+
 PERIODS = ["Period 1", "Period 2", "Period 3", "Period 4", "Period 5", "Period 6"]
 
 
@@ -160,12 +162,13 @@ def get_guardian_name(student):
 
 def branding_dict():
 	b = frappe.get_single("School Branding Settings")
+	colors = get_school_colors()
 	return {
 		"school_name": b.school_name or "SAMDELL MEMORIAL SCHOOL",
 		"school_motto": b.school_motto or "",
 		"logo": b.logo or "",
-		"primary_color": b.primary_color or "#6B3A2A",
-		"accent_color": b.accent_color or "#C5A028",
+		"primary_color": colors["primary_color"],
+		"accent_color": colors["accent_color"],
 		"principal_name": b.principal_name or "",
 	}
 

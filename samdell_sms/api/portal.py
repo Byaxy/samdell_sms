@@ -1,17 +1,20 @@
 import frappe
 
+from samdell_sms.api.branding import get_school_colors
+
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
 def get_branding():
 	branding = frappe.get_single("School Branding Settings")
+	colors = get_school_colors()
 	return {
 		"school_name": branding.school_name or "",
 		"school_motto": branding.school_motto or "",
 		"tagline": branding.tagline or "",
 		"logo": branding.logo or "",
-		"primary_color": branding.primary_color or "#6B3A2A",
-		"secondary_color": branding.secondary_color or "#C5A028",
-		"accent_color": branding.accent_color or "#C5A028",
+		"primary_color": colors["primary_color"],
+		"secondary_color": colors["accent_color"],
+		"accent_color": colors["accent_color"],
 	}
 
 

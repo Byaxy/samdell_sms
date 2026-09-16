@@ -99,7 +99,7 @@
 		background-image:
 			radial-gradient(ellipse 60% 45% at 80% 15%, rgba(197, 160, 40, 0.22), transparent 70%),
 			radial-gradient(ellipse 50% 40% at 10% 90%, rgba(197, 160, 40, 0.14), transparent 70%),
-			linear-gradient(160deg, {{ branding.primary_color or '#6B3A2A' }} 0%, #4a2416 55%, #2f1509 100%);
+			linear-gradient(160deg, {{ theme_colors.primary_color or '#6B3A2A' }} 0%, #4a2416 55%, #2f1509 100%);
 	}
 	.samdell-login-brand::before, .samdell-login-brand::after {
 		content: ""; position: absolute; border-radius: 9999px; border: 1px solid rgba(197, 160, 40, 0.14);
@@ -114,13 +114,13 @@
 		border-radius: 16px; background: rgba(255,255,255,0.96); box-shadow: 0 18px 40px -16px rgba(0,0,0,0.5);
 		padding: 0 1.25rem; margin-bottom: 1.75rem; white-space: nowrap; align-self: flex-start;
 	}
-	.samdell-login-brand .brand-mark span { font-family: "Fraunces", Georgia, serif; font-size: 2rem; font-weight: 700; color: {{ branding.primary_color or '#6B3A2A' }}; white-space: nowrap; line-height: 1; }
+	.samdell-login-brand .brand-mark span { font-family: "Fraunces", Georgia, serif; font-size: 2rem; font-weight: 700; color: {{ theme_colors.primary_color or '#6B3A2A' }}; white-space: nowrap; line-height: 1; }
 	.samdell-login-brand h1 { font-family: "Fraunces", Georgia, serif; font-size: 2.1rem; font-weight: 600; line-height: 1.3; margin: 0 0 1rem; color: #fff; padding-top: 0.5rem; }
 	.samdell-login-brand p { margin: 0 0 0.5rem; opacity: 0.92; line-height: 1.7; }
 	.samdell-login-brand p.tagline { font-size: 1.05rem; opacity: 0.95; max-width: 30rem; }
 	.samdell-login-brand p.motto { font-size: 0.85rem; opacity: 0.8; font-style: italic; letter-spacing: 0.02em; }
 	.samdell-login-brand .brand-foot { font-size: 0.8rem; opacity: 0.85; display: flex; align-items: center; gap: 0.6rem; position: relative; z-index: 1; }
-	.samdell-login-brand .brand-foot .badge { display: inline-block; width: 10px; height: 26px; border-radius: 2px; background: {{ branding.accent_color or '#C5A028' }}; }
+	.samdell-login-brand .brand-foot .badge { display: inline-block; width: 10px; height: 26px; border-radius: 2px; background: {{ theme_colors.accent_color or '#C5A028' }}; }
 	.samdell-login-form { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem 1.5rem; background: #faf7f2; overflow-y: auto; }
 	.samdell-login-form .login-foot { position: absolute; bottom: 1.25rem; left: 0; right: 0; text-align: center; color: #8a7a6a; font-size: 0.8rem; }
 	.samdell-login-form .login-foot .dot { opacity: 0.5; padding: 0 0.4rem; }
@@ -131,21 +131,21 @@
 	}
 	.samdell-login-form .page-card-head { border: none; padding: 0 0 1.5rem; margin: 0 0 1.5rem; border-bottom: 1px solid #f0e8dc; justify-content: flex-start; }
 	.samdell-login-form .app-logo { width: 44px; height: 44px; object-fit: contain; border-radius: 10px; background: rgba(197,160,40,0.14); padding: 6px; }
-	.samdell-login-form .app-logo-text { width: auto; min-width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: rgba(197,160,40,0.14); font-family: "Fraunces", Georgia, serif; font-size: 1.2rem; font-weight: 700; color: {{ branding.primary_color or '#6B3A2A' }}; padding: 0 0.65rem; white-space: nowrap; }
-	.samdell-login-form .page-card-head h4 { font-family: "Fraunces", Georgia, serif; font-size: 1.4rem; font-weight: 600; color: {{ branding.primary_color or '#6B3A2A' }}; margin: 0; }
+	.samdell-login-form .app-logo-text { width: auto; min-width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: rgba(197,160,40,0.14); font-family: "Fraunces", Georgia, serif; font-size: 1.2rem; font-weight: 700; color: {{ theme_colors.primary_color or '#6B3A2A' }}; padding: 0 0.65rem; white-space: nowrap; }
+	.samdell-login-form .page-card-head h4 { font-family: "Fraunces", Georgia, serif; font-size: 1.4rem; font-weight: 600; color: {{ theme_colors.primary_color or '#6B3A2A' }}; margin: 0; }
 	.samdell-login-form .page-card-subtitle { color: #8a7a6a; font-size: 0.9rem; margin-top: 0.25rem; }
 	.samdell-login-form .form-label { color: #5c4a3a; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
 	.samdell-login-form .form-control {
 		border: 1px solid #e2d9cf; border-radius: 0.75rem; height: 48px; padding: 0.625rem 2.4rem 0.625rem 0.9rem;
 		font-size: 0.95rem; color: #3d2f26; transition: border-color .2s ease, box-shadow .2s ease;
 	}
-	.samdell-login-form .form-control:focus { border-color: {{ branding.accent_color or '#C5A028' }}; box-shadow: 0 0 0 3px rgba(197, 160, 40, 0.18); outline: none; }
+	.samdell-login-form .form-control:focus { border-color: {{ theme_colors.accent_color or '#C5A028' }}; box-shadow: 0 0 0 3px rgba(197, 160, 40, 0.18); outline: none; }
 	.samdell-login-form .field-icon { color: #b3a48d; }
 	.samdell-login-form .page-card .page-card-actions .btn-login,
 	.samdell-login-form .page-card .page-card-actions .btn-ldap-login,
 	.samdell-login-form .page-card .page-card-actions .btn-primary,
 	.samdell-login-form .page-card .page-card-actions .btn-forgot {
-		background: {{ branding.primary_color or '#6B3A2A' }} !important; border: none; border-radius: 999px; height: 48px;
+		background: {{ theme_colors.primary_color or '#6B3A2A' }} !important; border: none; border-radius: 999px; height: 48px;
 		font-weight: 600; color: #fff !important; box-shadow: 0 12px 24px -12px rgba(76, 35, 18, 0.5);
 		transition: background .2s ease, transform .15s ease;
 	}
@@ -165,15 +165,15 @@
 	}
 	.samdell-login-form .page-card .page-card-actions .btn-login-option:hover,
 	.samdell-login-form .page-card .page-card-actions .btn-default:hover {
-		border-color: {{ branding.accent_color or '#C5A028' }}; color: #3d2f26; background: #fff;
+		border-color: {{ theme_colors.accent_color or '#C5A028' }}; color: #3d2f26; background: #fff;
 	}
 	.samdell-login-form .forgot-password-message a, .samdell-login-form .sign-up-message a {
-		color: {{ branding.primary_color or '#6B3A2A' }}; font-weight: 600; text-decoration: none;
+		color: {{ theme_colors.primary_color or '#6B3A2A' }}; font-weight: 600; text-decoration: none;
 	}
-	.samdell-login-form .forgot-password-message a:hover, .samdell-login-form .sign-up-message a:hover { color: {{ branding.accent_color or '#C5A028' }}; }
+	.samdell-login-form .forgot-password-message a:hover, .samdell-login-form .sign-up-message a:hover { color: {{ theme_colors.accent_color or '#C5A028' }}; }
 	.samdell-login-form .login-error-banner { border-radius: 0.75rem; }
 	.samdell-login-brand .back-home { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.85rem; }
-	.samdell-login-brand .back-home:hover { color: {{ branding.accent_color or '#C5A028' }}; }
+	.samdell-login-brand .back-home:hover { color: {{ theme_colors.accent_color or '#C5A028' }}; }
 	@media (max-width: 768px) {
 		.samdell-login-wrap { grid-template-columns: 1fr; }
 		.samdell-login-brand { display: none; }

@@ -1,11 +1,12 @@
 import frappe
 
-from samdell_sms.api.branding import get_school_abbr
+from samdell_sms.api.branding import get_school_abbr, get_school_colors
 
 
 def get_context(context):
 	branding = frappe.get_single("School Branding Settings")
 	context.branding = branding
+	context.theme_colors = get_school_colors()
 	context.abbr = get_school_abbr()
 
 	context.announcements = frappe.get_all(

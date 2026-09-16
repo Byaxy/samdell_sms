@@ -827,8 +827,9 @@ def _ensure_asset_account_types():
 
 
 def _seed_branding():
-	# Brand palette is always synced so re-runs (and prior bad seeds) converge to
-	# the official Mahogany Brown + Gold theme used across desk, web, and print.
+	# Brand palette lives on the Theme (single source of truth for colors),
+	# synced here so re-runs converge to the official Mahogany Brown + Gold
+	# used across desk, web, and print. Identity fields stay on Branding Settings.
 	BRAND_PRIMARY = "#6B3A2A"
 	BRAND_GOLD = "#C5A028"
 	branding = frappe.get_single("School Branding Settings")
@@ -841,16 +842,19 @@ def _seed_branding():
 	if not branding.school_levels:
 		branding.school_levels = "Early Childhood\nElementary\nJunior Secondary\nSenior Secondary"
 		changed = True
-	for field, value in {
-		"primary_color": BRAND_PRIMARY,
-		"secondary_color": BRAND_GOLD,
-		"accent_color": BRAND_GOLD,
-	}.items():
-		if branding.get(field) != value:
-			branding.set(field, value)
-			changed = True
 	if changed:
 		branding.save(ignore_permissions=True)
+	theme = frappe.get_single("Theme")
+	theme_changed = False
+	for field, value in {
+		"primary_color": BRAND_PRIMARY,
+		"accent_color": BRAND_GOLD,
+	}.items():
+		if theme.get(field) != value:
+			theme.set(field, value)
+			theme_changed = True
+	if theme_changed:
+		theme.save(ignore_permissions=True)
 
 	website = frappe.get_single("Website Settings")
 	website_changed = False

@@ -1,6 +1,21 @@
 import frappe
 
 
+def get_school_colors() -> dict:
+	"""School colors from the Theme, the single source of truth.
+
+	Returns {"primary_color": ..., "accent_color": ...} with official
+	Mahogany Brown + Gold fallbacks. Shares the cached get_theme() path.
+	"""
+	from samdell_sms.api import get_theme
+
+	theme = get_theme() or {}
+	return {
+		"primary_color": theme.get("primaryColor") or "#6B3A2A",
+		"accent_color": theme.get("accentColor") or "#C5A028",
+	}
+
+
 def get_school_abbr() -> str:
 	"""Return the school's display abbreviation for the text logo mark.
 
